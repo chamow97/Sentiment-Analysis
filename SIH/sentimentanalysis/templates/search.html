@@ -37,6 +37,44 @@
     <br>
     <br>
     <br>
-    <img src="{% static 'assets/images/india.svg' %}">
-
+    <div id="india-map" class="imageWrapper">
+    </div>
+    <script>
+        {% static "" as baseUrl %}
+        var states = ['punjab', 'delhi', 'manipur', 'nagaland',
+            'arunachalapradesh', 'madhyapradesh', 'tamilnadu',
+            'mizoram', 'tripura', 'telangana', 'uttarpradesh',
+            'jammukashmir', 'odisha', 'karnataka', 'maharashtra',
+            'chattisgarh', 'goa', 'himachalpradesh', 'gujarat', 'jharkhand',
+            'andrapradesh', 'westbengal', 'uttarakhand', 'meghalaya',
+            'rajasthan', 'bihar', 'sikkim', 'assam', 'kerala', 'haryana'];
+        var path = "assets/images/maps/";
+        states.forEach(function(value, index){
+            var randomVal = Math.floor(Math.random() * 3);
+            var mapColor;
+            if(randomVal === 0){
+                mapColor = "green";
+            }
+            else if(randomVal === 1) {
+                mapColor = "red";
+            }
+            else if(randomVal === 2){
+                mapColor = "blue";
+            }
+            else{
+                mapColor = "green";
+            }
+            var temp = '';
+            temp += value;
+            temp += '/';
+            temp += (value + '_' + mapColor + '.png');
+            temp = path + temp;
+            var currentElement = "";
+            currentElement += "<img class='overlayImage' src='{{ baseUrl }}";
+            currentElement += temp;
+            currentElement += " ' >";
+            {#console.log(currentElement);#}
+            document.getElementById("india-map").innerHTML += currentElement;
+        });
+    </script>
 {% endblock %}

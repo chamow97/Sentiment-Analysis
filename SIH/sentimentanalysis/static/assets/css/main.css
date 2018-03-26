@@ -625,3 +625,12 @@ canvas {
 #footer{
     background-color: #0f0f0f;
 }
+
+.imageWrapper {
+    position: relative;
+}
+.overlayImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
