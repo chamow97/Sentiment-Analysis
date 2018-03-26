@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block searchTerm %}
+    Explore
+{% endblock %}
+{% block active %}
+    active
+{% endblock %}
+{% block content %}
+    <a href="../search">
+        <section class="description-area" id="search-image">
+            <div id="search-container" class="row">
+                <img class="description-image" src="{% static 'assets/images/Search.png' %}" alt="Search">
+                <div class="top-right">
+                    <h2 class="red-text">Search</h2>
+                    <p class="grey-text">Search and get the results.</p>
+                </div>
+
+            </div>
+        </section>
+    </a>
+    <a href="../search">
+        <section class="description-area" id="analyze-image">
+            <div id="analyze-container" class="row">
+                <img class="description-image" src="{% static 'assets/images/Analysis.png' %}" alt="Analyze">
+                <div class="col col-lg-offset-1 col-md-offset-1 col-sm-offset-4 col-xs-offset-4 bottom-left">
+                    <h2 class="white-text">Analyze</h2>
+                    <p class="white-text">Analyze the results to know more.</p>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="../search">
+        <section class="description-area" id="graph-image">
+            <div id="graph-container" class="row">
+                <img class="description-image" src="{% static 'assets/images/Graphs.png' %}" alt="Graph">
+                <div class="top-right">
+                    <h2 class="red-text">Graphs</h2>
+                    <p class="grey-text">Get the results in graphs.</p>
+                </div>
+            </div>
+        </section>
+    </a>
+{% endblock %}

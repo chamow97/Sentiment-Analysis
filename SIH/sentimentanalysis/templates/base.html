@@ -1,0 +1,66 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Sentiment Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{% static 'assets/plugins/toastr/build/toastr.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+	    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap-navbar-sidebar/dist/navbar-fixed-left.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/animate.css' %}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    </head>
+    <body>
+		<div class="page-wrap">
+
+        <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <br>
+                    <br>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../" class="{% block active %}{% endblock %}"><span class="glyphicon glyphicon-home display-inline"></span><span class="display-inline nav-text">&nbsp;&nbsp;&nbsp;Dashboard</span></a></li>
+                    <br>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../search" class="{% block active1 %}{% endblock %}"><span class="glyphicon glyphicon-search display-inline"></span><span class="display-inline nav-text">&nbsp;&nbsp;&nbsp;Search</span></a></li>
+                </ul>
+            </nav>
+
+        <!-- Main -->
+            <section id="main">
+
+                <!-- Banner -->
+                    <section id="banner">
+                        <div class="inner">
+                            <h1 class="animated fadeInUp">Smart India Hackathon</h1>
+                            <p class="animated fadeInUp">Sentiment Analysis</p>
+                            <ul class="animated fadeInUp actions">
+                                <li><a href="#search-image" class="btn btn-block btn-primary">{% block searchTerm %}{% endblock %}</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                        {% block content %}
+                        {% endblock %}
+                    <div id="footer">
+                        <br>
+                        <br>
+                        <br>
+                        <h1 class="animated fadeInUp">Smart India Hackathon</h1>
+                        <p class="animated fadeInUp">Sentiment Analysis</p>
+                        <br>
+                        <br>
+                        <br>
+
+                    </div>
+
+            </section>
+        </div>
+        <script src="{% static 'assets/plugins/jquery.js' %}"></script>
+        <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/toastr/toastr.js' %}"></script>
+        <script src="{% static 'assets/plugins/smooth-scroll/dist/js/smooth-scroll.min.js' %}"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    </body>
+</html>
