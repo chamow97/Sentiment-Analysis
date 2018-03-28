@@ -19,9 +19,9 @@
             <br>
             <br>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for terms">
+                <input type="text" class="search-term form-control search-style" placeholder="Search">
                 <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                <button class="btn btn-default search-style" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
         </div>
@@ -30,14 +30,16 @@
     <br>
     <br>
     <div class="chart-container">
-        <canvas id="chart"></canvas>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div id="india-map" class="imageWrapper">
+        <canvas id="sentiment-chart"></canvas>
+        <br>
+        <canvas id="timeline-chart"></canvas>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="india-map" class="imageWrapper">
+        </div>
     </div>
     <script>
         {% static "" as baseUrl %}

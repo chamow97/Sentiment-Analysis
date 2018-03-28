@@ -6,24 +6,28 @@ var scroll = new SmoothScroll('a[href*="#"]', {
 	},
 });
 
- var data = {
-  labels: ["Positive", "Negative", "Neutral"],
-  datasets: [{
-    data: [60, 20, 20],
-      backgroundColor: [
-          "#5aff23",
-          "#ff0000",
-          "#00ffe5"
-      ]
-  }],
 
-};
-
-var options = {
-  maintainAspectRatio: false,
-};
-
-Chart.Doughnut('chart', {
-  options: options,
-  data: data
+var ctx = document.getElementById("sentiment-chart");
+var sentimentChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["Positive", "Negative", "Neutral"],
+        datasets: [{
+            label: '% of Tweets',
+            data: [60, 20, 20],
+            backgroundColor: [
+                "#4CD900",
+                "#FF0000",
+                "#007AFF"
+            ],
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+    }
 });
+
+//linechart
+
+
+var ctx = document.getElementById("timeline-chart");

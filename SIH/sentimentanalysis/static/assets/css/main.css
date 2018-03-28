@@ -27,8 +27,8 @@ body{
         margin: 0;
         padding: 0;
         max-height: 100% !important;
-        box-shadow: 2px 2px 5px #000000 !important;
         transition: width 1s;
+        border-right: 1px solid #D3D9DB;
 
 	}
         #nav .nav-text{
@@ -509,6 +509,7 @@ ol {
     width: 100%;
     height: auto;
     background-color: #EB3749;
+
 }
 
 #analyze-container{
@@ -534,7 +535,7 @@ ol {
 .description-image{
     width: 100%;
     height: auto;
-    padding: 4em 4em;
+    padding: 4em 4em 4em 4em;
 }
 
 .fadeInUp{
@@ -562,8 +563,8 @@ ol {
 
 .top-right {
     position: absolute;
-    top: 16%;
-    right: -5%;
+    top: 20vh;
+    right: -8vw;
 }
 
 .bottom-left {
@@ -579,16 +580,16 @@ ol {
     color: #575B5B;
 }
 
-h2{
-    font-size: 2em;
+h1{
+    font-size: 3vw;
 }
 
-p{
-    font-size: 1em;
+h3{
+    font-size: 2vw;
 }
 
 span{
-    font-size: 3vh;
+    font-size: 1.5vw;
 }
 
 canvas {
@@ -634,3 +635,12 @@ canvas {
   top: 0;
   left: 0;
 }
+
+.search-style{
+    height: 50px;
+}
+
+.search-term{
+    background-color: #F3F4F4;
+}
+/*f4f8f9*/
