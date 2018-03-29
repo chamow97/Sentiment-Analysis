@@ -484,6 +484,7 @@ ol {
 		display: -ms-flexbox;
 		display: -moz-flex;
 		display: -webkit-flex;
+		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
 		-moz-flex-wrap: wrap;
@@ -597,7 +598,7 @@ span{
 }
 
 canvas {
-  border: 1px dotted red;
+  border: 1px solid black;
 }
 
 .chart-container {
@@ -605,7 +606,7 @@ canvas {
   margin: auto;
   height: 60vh;
   width: 60vw;
-  border: 2px solid #000000;
+  border: 10px solid #FFF;
 }
 
 .description-area{

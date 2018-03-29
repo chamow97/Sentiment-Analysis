@@ -1,4 +1,50 @@
-var maps = [  {
+{% extends 'base.html' %}
+{% load static %}
+{% block active1 %}
+    active
+{% endblock %}
+{% block content %}
+    <div>
+    <div class="chart-container">
+            <canvas id="sentiment-pie-chart"></canvas>
+            <br>
+            <br>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="sentiment-bar-chart"></canvas>
+            <br>
+            <br>
+        </div>
+
+        <div class="chart-container">
+            <div id="india-map" class="imageWrapper">
+            </div>
+            <img src="{% static 'assets/images/maps/legend.png' %}">
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+{#        <div class="chartWrapper">#}
+{#          <div class="chartAreaWrapper">#}
+{#            <div class="chartAreaWrapper2">#}
+{#                <canvas id="myChart"></canvas>#}
+{#            </div>#}
+{#          </div>#}
+{#          <canvas id="myChartAxis" height="300" width="0"></canvas>#}
+{#        </div>#}
+        <script>
+            {% static "" as baseUrl %}
+            {#var states = ['punjab', 'delhi', 'manipur', 'nagaland',#}
+            {#    'arunachalapradesh', 'madhyapradesh', 'tamilnadu',#}
+            {#    'mizoram', 'tripura', 'telangana', 'uttarpradesh',#}
+            {#    'jammukashmir', 'odisha', 'karnataka', 'maharashtra',#}
+            {#    'chattisgarh', 'goa', 'himachalpradesh', 'gujarat', 'jharkhand',#}
+            {#    'andrapradesh', 'westbengal', 'uttarakhand', 'meghalaya',#}
+            {#    'rajasthan', 'bihar', 'sikkim', 'assam', 'kerala', 'haryana'];#}
+            var states = [];
+            var maps = [  {
 	"contents": {
 		"timeline": {
 			"neg": {
@@ -334,265 +380,38 @@ var maps = [  {
 	}
 }];
 
-var totalTweetCount = 0;
-var negativeTweetCount, positiveTweetCount, neutralTweetCount;
-
-function calculateTweetCount(){
-    positiveTweetCount = 0;
-    for(var row in maps[0]["contents"]["timeline"]["pos"]){
-        positiveTweetCount = parseInt(maps[0]["contents"]["timeline"]["pos"][row]) + positiveTweetCount;
-    }
-    negativeTweetCount = 0;
-    for(var row in maps[0]["contents"]["timeline"]["neg"]){
-        negativeTweetCount = parseInt(maps[0]["contents"]["timeline"]["neg"][row]) + negativeTweetCount;
-    }
-    neutralTweetCount = 0;
-    for(var row in maps[0]["contents"]["timeline"]["neu"]){
-        neutralTweetCount = parseInt(maps[0]["contents"]["timeline"]["neu"][row]) + neutralTweetCount;
-    }
-    totalTweetCount = 0;
-    totalTweetCount = positiveTweetCount + neutralTweetCount + negativeTweetCount;
-}
-
-function showPieChart(){
-    positivePercent = Math.round(((parseFloat(positiveTweetCount/totalTweetCount)) * 100) * 100) / 100;
-    negativePercent = Math.round(((parseFloat(negativeTweetCount/totalTweetCount)) * 100) * 100) / 100;
-    neutralPercent = Math.round(parseFloat(100 - positivePercent - negativePercent) * 100) / 100;
-    var ctx = document.getElementById("sentiment-pie-chart");
-    var dataPercent = [];
-    dataPercent.push(positivePercent);
-    dataPercent.push(negativePercent);
-    dataPercent.push(neutralPercent);
-    var sentimentChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ["Positive", "Negative", "Neutral"],
-            datasets: [{
-                label: '% of Tweets',
-                data: dataPercent,
-                 backgroundColor: [
-                    "#4CD900",
-                    "#FF0000",
-                    "#007AFF"
-                ],
-            }]
-        },
-        options: {
-            tooltips: {
-                mode: 'label',
-                callbacks: {
-                    label: function(tooltipItem, data) {
-                        return dataPercent[tooltipItem['index']] + '%';
-                    }
+            for(var row in maps[0]["contents"]["geographic_sentiments"]){
+                states.push(row);
+            }
+            var path = "assets/images/maps/";
+            states.forEach(function(value, index){
+                var randomVal = Math.floor(Math.random() * 4);
+                var mapColor;
+                if(randomVal === 0){
+                    mapColor = "green";
                 }
-            },
-            maintainAspectRatio: false,
-        }
-    });
-}
-
-function showBarChart(){
-    var hinduData = [], muslimData = [], christianData = [];
-    for(var row in maps[0]["contents"]["ethnicity"]["Hindu"]){
-        hinduData.push(maps[0]["contents"]["ethnicity"]["Hindu"][row]);
-    }
-    for(var row in maps[0]["contents"]["ethnicity"]["Muslim"]){
-        muslimData.push(maps[0]["contents"]["ethnicity"]["Muslim"][row]);
-    }
-    for(var row in maps[0]["contents"]["ethnicity"]["Christian"]){
-        christianData.push(maps[0]["contents"]["ethnicity"]["Christian"][row]);
-    }
-
-    var ctx = document.getElementById("sentiment-bar-chart").getContext("2d");
-    var data = {
-        labels: ["Hindu", "Muslim", "Christian and Others"],
-        datasets: [
-            {
-                label: "Positive",
-                backgroundColor: "#4CD900",
-                data: [hinduData[2], muslimData[2], christianData[2]]
-            },
-            {
-                label: "Negative",
-                backgroundColor: "#FF0000",
-                data: [hinduData[0], muslimData[0], christianData[0]]
-            },
-            {
-                label: "Neutral",
-                backgroundColor: "#007AFF",
-                data: [hinduData[1], muslimData[1], christianData[1]]
-            }
-        ]
-    };
-
-    var sentimentBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: {
-            barValueSpacing: 20,
-            scales: {
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Number of Tweets'
-                    },
-                    ticks: {
-                        min: 0,
-                    }
-                }]
-            }
-        }
-    });
-}
-
-function showLineChart(){
-    var positiveTimeline = [], negativeTimeline = [], neutralTimeline = [], totalTimeline = [];
-    for(var row in maps[0]["contents"]["timeline"]) {
-        for(var feedback in maps[0]["contents"]["timeline"][row]){
-            totalTimeline.push(feedback);
-            if(row == "pos"){
-                positiveTimeline.push(feedback);
-            }
-            else if(row == "neg"){
-                negativeTimeline.push(feedback);
-            }
-            else{
-                neutralTimeline.push(feedback);
-            }
-        }
-    }
-
-    positiveTimeline.sort();
-    negativeTimeline.sort();
-    neutralTimeline.sort();
-    totalTimeline.sort();
-    var ctx = document.getElementById("myChart").getContext("2d");
-
-    Chart.defaults.global.defaultFontColor = 'black';
-    Chart.defaults.global.defaultFontSize = 16;
-
-    var data = {
-      labels: totalTimeline,
-      datasets: [{
-          label: "Positive",
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: "rgba(225,0,0,0.4)",
-          borderColor: "red", // The main line color
-          borderCapStyle: 'square',
-          borderDash: [], // try [5, 15] for instance
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "black",
-          pointBackgroundColor: "white",
-          pointBorderWidth: 1,
-          pointHoverRadius: 8,
-          pointHoverBackgroundColor: "yellow",
-          pointHoverBorderColor: "brown",
-          pointHoverBorderWidth: 2,
-          pointRadius: 4,
-          pointHitRadius: 10,
-          // notice the gap in the data and the spanGaps: true
-          data: positiveTimeline,
-          spanGaps: true,
-        }, {
-          label: "Negative",
-          fill: true,
-          lineTension: 0.1,
-          backgroundColor: "rgba(167,105,0,0.4)",
-          borderColor: "rgb(167, 105, 0)",
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "white",
-          pointBackgroundColor: "black",
-          pointBorderWidth: 1,
-          pointHoverRadius: 8,
-          pointHoverBackgroundColor: "brown",
-          pointHoverBorderColor: "yellow",
-          pointHoverBorderWidth: 2,
-          pointRadius: 4,
-          pointHitRadius: 10,
-          // notice the gap in the data and the spanGaps: false
-          data: negativeTimeline,
-          spanGaps: false,
-        }, {
-          label: "Neutral",
-          fill: true,
-          lineTension: 0.1,
-          backgroundColor: "rgba(167,105,0,0.4)",
-          borderColor: "rgb(167, 105, 0)",
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "white",
-          pointBackgroundColor: "black",
-          pointBorderWidth: 1,
-          pointHoverRadius: 8,
-          pointHoverBackgroundColor: "brown",
-          pointHoverBorderColor: "yellow",
-          pointHoverBorderWidth: 2,
-          pointRadius: 4,
-          pointHitRadius: 10,
-          // notice the gap in the data and the spanGaps: false
-          data: neutralTimeline,
-          spanGaps: false,
-        }
-
-      ]
-    };
-
-
-
-    // Notice the scaleLabel at the same level as Ticks
-    var options = {
-      scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    },
-                    scaleLabel: {
-                         display: true,
-                         labelString: 'Moola',
-                         fontSize: 20
-                      }
-                }]
-            },
-        animation: {
-
-                    onComplete: function(animation) {
-                        var sourceCanvas = myLiveChart.chart.canvas;
-                        var copyWidth = myLiveChart.scales['y-axis-0'].width - 10;
-                        var copyHeight = myLiveChart.scales['y-axis-0'].height + myLiveChart.scales['y-axis-0'].top + 10;
-                        var targetCtx = document.getElementById("myChartAxis").getContext("2d");
-                        targetCtx.canvas.width = copyWidth;
-                targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
-                    }
+                else if(randomVal === 1) {
+                    mapColor = "red";
                 }
+                else if(randomVal === 2){
+                    mapColor = "blue";
+                }
+                else if(randomVal === 3){
+                    mapColor = "grey";
+                }
+                var temp = '';
+                temp += value;
+                temp += '/';
+                temp += (value + '_' + mapColor + '.png');
+                temp = path + temp;
+                var currentElement = "";
+                currentElement += "<img class='overlayImage' src='{{ baseUrl }}";
+                currentElement += temp;
+                currentElement += " ' >";
+                {#console.log(currentElement);#}
+                document.getElementById("india-map").innerHTML += currentElement;
+            });
+        </script>
 
-    };
-
-    // Chart declaration:
-    var myLiveChart = new Chart(ctx, data);
-    setInterval(function () {
-  myLiveChart.data.datasets[0].data.push(Math.random() * 100);
-	myLiveChart.data.labels.push("Test");
-  var newwidth = $('.chartAreaWrapper2').width() +60;
-  $('.chartAreaWrapper2').width(newwidth);
-   $('.chartAreaWrapper').animate({scrollLeft:newwidth});
-
-    }, 5000);
-
-}
-
-function showMap(){
-
-}
-
-calculateTweetCount();
-showPieChart();
-showBarChart();
-// showLineChart();
-showMap();
+    </div>
+{% endblock %}

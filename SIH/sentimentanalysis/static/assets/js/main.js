@@ -16,9 +16,33 @@ function showTrending(){
     }
     else{
         trendingBox.classList.remove('trending-box');
-        trendingBox.classList.add('zero-opacity');
+        this.classList.add('zero-opacity');
     }
 }
 
 var searchBox = document.querySelector(".search-term");
 searchBox.addEventListener('click', showTrending);
+
+// var ctx = document.getElementById("sentiment-chart");
+// var sentimentChart = new Chart(ctx, {
+//     type: 'pie',
+//     data: {
+//         labels: ["Positive", "Negative", "Neutral"],
+//         datasets: [{
+//             label: '% of Tweets',
+//             data: [60, 20, 20],
+//             backgroundColor: [
+//                 "#4CD900",
+//                 "#FF0000",
+//                 "#007AFF"
+//             ],
+//         }]
+//     },
+//     options: {
+//         maintainAspectRatio: false,
+//     }
+// });
+
+//linechart
+
+// var ctx = document.getElementById("timeline-chart");
