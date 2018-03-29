@@ -10,73 +10,75 @@
     <br>
     <br>
     <br>
-    <div class="row">
-    <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
-    </div>
-    <div class="col col-xs-6 col-sm-6 col-md-8 col-lg-8">
-        <div id="search-image">
-            <br>
-            <br>
-            <br>
-            <div class="input-group">
-                <input type="text" class="search-term form-control search-style" placeholder="Search">
-                <span class="input-group-btn">
+    <div>
+        <div class="row">
+            <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
+            </div>
+            <div class="col col-xs-6 col-sm-6 col-md-8 col-lg-8">
+                <div id="search-image">
+                    <br>
+                    <br>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="search-term form-control search-style" placeholder="Search">
+                        <span class="input-group-btn">
                 <button class="btn btn-default search-style" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    <br>
-    <br>
-    <div class="chart-container">
-        <canvas id="sentiment-chart"></canvas>
-        <br>
-        <canvas id="timeline-chart"></canvas>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <div id="india-map" class="imageWrapper">
+        <div class="chart-container">
+            <canvas id="sentiment-chart"></canvas>
+            <br>
+            <canvas id="timeline-chart"></canvas>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id="india-map" class="imageWrapper">
+            </div>
         </div>
+        <script>
+            {% static "" as baseUrl %}
+            var states = ['punjab', 'delhi', 'manipur', 'nagaland',
+                'arunachalapradesh', 'madhyapradesh', 'tamilnadu',
+                'mizoram', 'tripura', 'telangana', 'uttarpradesh',
+                'jammukashmir', 'odisha', 'karnataka', 'maharashtra',
+                'chattisgarh', 'goa', 'himachalpradesh', 'gujarat', 'jharkhand',
+                'andrapradesh', 'westbengal', 'uttarakhand', 'meghalaya',
+                'rajasthan', 'bihar', 'sikkim', 'assam', 'kerala', 'haryana'];
+            var path = "assets/images/maps/";
+            states.forEach(function(value, index){
+                var randomVal = Math.floor(Math.random() * 3);
+                var mapColor;
+                if(randomVal === 0){
+                    mapColor = "green";
+                }
+                else if(randomVal === 1) {
+                    mapColor = "red";
+                }
+                else if(randomVal === 2){
+                    mapColor = "blue";
+                }
+                else{
+                    mapColor = "green";
+                }
+                var temp = '';
+                temp += value;
+                temp += '/';
+                temp += (value + '_' + mapColor + '.png');
+                temp = path + temp;
+                var currentElement = "";
+                currentElement += "<img class='overlayImage' src='{{ baseUrl }}";
+                currentElement += temp;
+                currentElement += " ' >";
+                {#console.log(currentElement);#}
+                document.getElementById("india-map").innerHTML += currentElement;
+            });
+        </script>
     </div>
-    <script>
-        {% static "" as baseUrl %}
-        var states = ['punjab', 'delhi', 'manipur', 'nagaland',
-            'arunachalapradesh', 'madhyapradesh', 'tamilnadu',
-            'mizoram', 'tripura', 'telangana', 'uttarpradesh',
-            'jammukashmir', 'odisha', 'karnataka', 'maharashtra',
-            'chattisgarh', 'goa', 'himachalpradesh', 'gujarat', 'jharkhand',
-            'andrapradesh', 'westbengal', 'uttarakhand', 'meghalaya',
-            'rajasthan', 'bihar', 'sikkim', 'assam', 'kerala', 'haryana'];
-        var path = "assets/images/maps/";
-        states.forEach(function(value, index){
-            var randomVal = Math.floor(Math.random() * 3);
-            var mapColor;
-            if(randomVal === 0){
-                mapColor = "green";
-            }
-            else if(randomVal === 1) {
-                mapColor = "red";
-            }
-            else if(randomVal === 2){
-                mapColor = "blue";
-            }
-            else{
-                mapColor = "green";
-            }
-            var temp = '';
-            temp += value;
-            temp += '/';
-            temp += (value + '_' + mapColor + '.png');
-            temp = path + temp;
-            var currentElement = "";
-            currentElement += "<img class='overlayImage' src='{{ baseUrl }}";
-            currentElement += temp;
-            currentElement += " ' >";
-            {#console.log(currentElement);#}
-            document.getElementById("india-map").innerHTML += currentElement;
-        });
-    </script>
 {% endblock %}
