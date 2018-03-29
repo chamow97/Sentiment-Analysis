@@ -15,7 +15,6 @@ body{
 		-ms-flex-wrap: nowrap;
 		flex-wrap: nowrap;
 		-moz-justify-content: -moz-flex-start;
-		-webkit-justify-content: -webkit-flex-start;
 		-ms-justify-content: -ms-flex-start;
 		justify-content: flex-start;
 	}
@@ -28,7 +27,7 @@ body{
         padding: 0;
         max-height: 100% !important;
         transition: width 1s;
-        border-right: 1px solid #D3D9DB;
+        border-right: 2px solid #D3D9DB;
 
 	}
         #nav .nav-text{
@@ -113,12 +112,12 @@ body{
 		-ms-justify-content: center;
 		justify-content: center;
 		min-height: 75vh;
-		height: 75vh;
+		height: 90vh;
 		position: relative;
-		background: #000;
 		background-size: cover;
-		background-attachment: fixed;
+        background-attachment: fixed;
 		background-repeat: no-repeat;
+        zoom: 88%;
 		background-position: center;
 		text-align: center;
 		color: #fff;
@@ -135,13 +134,17 @@ body{
 			transition-delay: 0.25s;
 			content: '';
 			display: block;
-			background-color: #000;
-			height: 100%;
+			background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: auto;
 			left: 0;
 			opacity: 0.65;
 			position: absolute;
 			top: 0;
 			width: 100%;
+            max-width: 100%;
 			z-index: 1;
 		}
 
@@ -174,6 +177,7 @@ body{
 		}
 
 		#banner a {
+            margin-top: 30em;
 			color: #fff;
 			text-decoration: none;
 		}
@@ -638,9 +642,65 @@ canvas {
 
 .search-style{
     height: 50px;
+    border: 2px solid #fff;
+}
+
+.search-button{
+    background-color: #EB3749;
+    color: #F3F4F4;
+    width: 6vw;
+    border-radius: 0px 7px 7px 0px;
 }
 
 .search-term{
     background-color: #F3F4F4;
+    border: 2px solid #fff;
+    border-radius: 8px 0px 0px 8px;
+    font-size: larger;
+    font-weight: bolder;
 }
 /*f4f8f9*/
+
+.trending-box{
+   opacity: 1;
+   transition: opacity 1s;
+   background-color: #F3F4F4;
+   height: 100px;
+}
+
+#trending-div{
+    margin: 0px 8% 0px 1%;
+    border-radius: 5px;
+}
+
+.zero-opacity{
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.glyphicon-chevron-down{
+    font-size: xx-large;
+}
+
+        .chartWrapper {
+            position: relative;
+
+        }
+
+        .chartWrapper > canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events:none;
+        }
+.chartAreaWrapper {
+          overflow-x: scroll;
+            position: relative;
+            width: 100%;
+        }
+
+        .chartAreaWrapper2 {
+
+            position: relative;
+            height: 300px;
+        }

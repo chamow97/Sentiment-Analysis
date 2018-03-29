@@ -25,13 +25,10 @@
                 </ul>
             </nav>
             <section id="main">
-                <!-- Banner -->
-                    <section id="banner">
+                    <section style='background: url("{% static 'assets/images/back-banner.jpg' %}");' id="banner">
                         <div class="inner">
-                            <h1 class="animated fadeInUp">Smart India Hackathon</h1>
-                            <p class="animated fadeInUp">Sentiment Analysis</p>
                             <ul class="animated fadeInUp actions">
-                                <li><a href="#search-image" class="btn btn-block btn-primary">{% block searchTerm %}{% endblock %}</a></li>
+                                <li><a href="#search-image" class="btn"><span class="glyphicon glyphicon-chevron-down"></span></a></li>
                             </ul>
                         </div>
                     </section>
@@ -62,6 +59,7 @@
 {#        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>#}
         <script src="{% static 'assets/plugins/charts.js' %}"></script>
         <script src="{% static 'assets/js/main.js' %}"></script>
+        <script src="{% static 'assets/js/maps.js' %}"></script>
         <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
     </body>
 </html>

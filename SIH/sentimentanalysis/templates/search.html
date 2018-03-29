@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block searchTerm %}
-    Search
-{% endblock %}
 {% block active1 %}
     active
 {% endblock %}
@@ -22,25 +19,50 @@
                     <div class="input-group">
                         <input type="text" class="search-term form-control search-style" placeholder="Search">
                         <span class="input-group-btn">
-                <button class="btn btn-default search-style" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
+                            <button class="search-style search-button" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
+            </div>
+            <div class="col col-xs-6 col-sm-6 col-md-8 col-lg-8">
+                <div id="trending-div" class="zero-opacity"></div>
             </div>
         </div>
         <br>
         <br>
         <div class="chart-container">
-            <canvas id="sentiment-chart"></canvas>
-            <br>
-            <canvas id="timeline-chart"></canvas>
+            <canvas id="sentiment-pie-chart"></canvas>
             <br>
             <br>
+
+
+        </div>
+
+        <div class="chart-container">
+            <canvas id="sentiment-bar-chart"></canvas>
             <br>
             <br>
-            <br>
+        </div>
+
+        <div class="chart-container">
             <div id="india-map" class="imageWrapper">
             </div>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+        <div class="chartWrapper">
+          <div class="chartAreaWrapper">
+            <div class="chartAreaWrapper2">
+                <canvas id="myChart"></canvas>
+            </div>
+          </div>
+          <canvas id="myChartAxis" height="300" width="0"></canvas>
         </div>
         <script>
             {% static "" as baseUrl %}
