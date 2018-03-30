@@ -10,688 +10,700 @@
             <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
             </div>
             <div class="col col-xs-6 col-sm-6 col-md-8 col-lg-8">
-                <div id="search-image">
+                <form id="search-image" method="POST" action="/get_results">
                     <br>
                     <br>
                     <br>
                     <div class="input-group">
-                        <input type="text" class="search-term form-control search-style" placeholder="Search">
+                        <input name="searchTerm" type="text" class="search-term form-control search-style" placeholder="Search">
                         <span class="input-group-btn">
-                            <button id="searchterm" class="search-style search-button" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                            <button type="submit" id="searchterm" class="search-style search-button" type="button"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-            <br>
-    <br>
-    <br>    <br>
-    <br>
-    <br>
-        <div class="map-areas">
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="row">
-            <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
-            </div>
-            <div class="col col-xs-6 col-sm-6 col-md-8 col-lg-8">
-                <div id="trending-div" class="zero-opacity"></div>
-            </div>
-        </div>
-        <div class="chart-container">
-            <div id="canvas-holder">
-		    <canvas id="chart-area"></canvas>
-	    </div>
-        </div>
-        <br>
-        <br>
-        <div class="chart-container">
-            <canvas id="sentiment-bar-chart"></canvas>
-            <br>
-            <br>
-        </div>
-        <br>
-        <br>
-        <div style="background-color: #FFF; height: 750px; border-radius: 8px;" class="chart-container">
-            <div id="india-map" class="imageWrapper">
-            </div>
-            <br>
-            <br>
-            <img class="legends" src="{% static 'assets/images/maps/legend.png' %}">
-        </div>
-            <br>
-
-
-
-        <br>
-        <br>
-        <br>
-        <div class="chart-container">
-            <div>
-		<canvas id="canvas"></canvas>
-        </div>
-        </div>
-            <br>
-            <br><br>
-            <br>
-
-            <br>
-            <br>
-             <div id="positive-important-tweets">
-
-            </div>
-            <div id="negative-important-tweets">
-
-            </div>
-
-            <script>
-                 var positiveTweets = document.getElementById("positive-important-tweets");
-                var negativeTweets = document.getElementById("negative-important-tweets");
-            function generateAll(){
-                       {% static "" as baseUrl %}
-                var states = [];
-                var maps = [{
-    "contents": {
-        "ethnicity": {
-            "Christian": {
-                "neg": 22,
-                "neu": 131,
-                "pos": 67
-            },
-            "Hindu": {
-                "neg": 16,
-                "neu": 116,
-                "pos": 53
-            },
-            "Muslim": {
-                "neg": 12,
-                "neu": 66,
-                "pos": 27
-            }
-        },
-        "gender_details": {
-            "F": {
-                "neg": 12,
-                "neu": 72,
-                "pos": 22
-            },
-            "M": {
-                "neg": 38,
-                "neu": 241,
-                "pos": 125
-            }
-        },
-        "geographic_sentiments": {
-            "Andaman and Nicobar": {
-                "neg": 0,
-                "neu": 1,
-                "pos": 0
-            },
-            "Andhra Pradesh": {
-                "neg": 23,
-                "neu": 139,
-                "pos": 55
-            },
-            "Arunachal Pradesh": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Assam": {
-                "neg": 2,
-                "neu": 3,
-                "pos": 0
-            },
-            "Bihar": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Chhattisgarh": {
-                "neg": 0,
-                "neu": 1,
-                "pos": 0
-            },
-            "Dadra and Nagar Haveli": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Daman and Diu": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Delhi": {
-                "neg": 0,
-                "neu": 9,
-                "pos": 3
-            },
-            "Goa": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 1
-            },
-            "Gujarat": {
-                "neg": 0,
-                "neu": 5,
-                "pos": 2
-            },
-            "Haryana": {
-                "neg": 1,
-                "neu": 1,
-                "pos": 2
-            },
-            "Himachal Pradesh": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Jammu and Kashmir": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Jharkhand": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Karnataka": {
-                "neg": 1,
-                "neu": 5,
-                "pos": 2
-            },
-            "Kerala": {
-                "neg": 0,
-                "neu": 3,
-                "pos": 1
-            },
-            "Lakshadweep": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Madhya Pradesh": {
-                "neg": 0,
-                "neu": 2,
-                "pos": 0
-            },
-            "Maharashtra": {
-                "neg": 2,
-                "neu": 12,
-                "pos": 9
-            },
-            "Manipur": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Meghalaya": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 1
-            },
-            "Mizoram": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Nagaland": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Orissa": {
-                "neg": 0,
-                "neu": 2,
-                "pos": 0
-            },
-            "Others": {
-                "neg": 15,
-                "neu": 106,
-                "pos": 50
-            },
-            "Pondicherry": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Punjab": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 2
-            },
-            "Rajasthan": {
-                "neg": 2,
-                "neu": 3,
-                "pos": 6
-            },
-            "Sikkim": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Tamil Nadu": {
-                "neg": 2,
-                "neu": 7,
-                "pos": 5
-            },
-            "Telangana": {
-                "neg": 1,
-                "neu": 3,
-                "pos": 5
-            },
-            "Tripura": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "Uttar Pradesh": {
-                "neg": 1,
-                "neu": 7,
-                "pos": 2
-            },
-            "Uttarakhand": {
-                "neg": 0,
-                "neu": 0,
-                "pos": 0
-            },
-            "West Bengal": {
-                "neg": 0,
-                "neu": 4,
-                "pos": 1
-            }
-        },
-        "important_tweets": {
-            "neg": [
-                {
-                    "original_text": "The fuck. I've never heard of this video yet it's the most viewed video on YouTube by 1.5 BILLION views. WHAT. I don't even understand, it's just a very generic music video to a normal sounding pop song?! https://t.co/qWZgbhGN1J https://t.co/WenzoU1xd4",
-                    "text": "The fuck. I've never heard of this video yet it's the most viewed video on YouTube by 1.5 BILLION views. WHAT. I don't even understand, it's just a very generic music video to a normal sounding pop song?! "
-                },
-                {
-                    "original_text": "@MKBHD #askMKBHD Hey Marques.... What are your thoughts on the Cambridge Analytica Facebook Data Scandal?? Is it the time that we delete Facebook? What\\u2019s this hype about though?  What are your views on this??",
-                    "text": "@MKBHD #askMKBHD Hey Marques.... What are your thoughts on the Cambridge Analytica Facebook Data Scandal?? Is it the time that we delete Facebook? What this hype about though? What are your views on this??"
-                },
-                {
-                    "original_text": "@WOFginger @MKBHD Only a first few tweets tho. Charges apply for afterwards. \\U0001f61b",
-                    "text": "@WOFginger @MKBHD Only a first few tweets tho. Charges apply for afterwards. "
-                },
-                {
-                    "original_text": "@MKBHD What da Hell is happening with Facebook ?!",
-                    "text": "@MKBHD What da Hell is happening with Facebook ?!"
-                },
-                {
-                    "original_text": "@MKBHD What's wrong with you, did Apple pay you to tweet about them all the time?",
-                    "text": "@MKBHD What's wrong with you, did Apple pay you to tweet about them all the time?"
-                }
-            ],
-            "neu": [
-                {
-                    "original_text": "Shot on Nokia 8 processed \\n@Nokiamobile @NokiamobBlog @Nokiapoweruser @nokia @500px @NatGeoPhotos @ZEISSLenses @MKBHD @TechnicalGuruji https://t.co/u4qWqpUC13",
-                    "text": "Shot on Nokia 8 processed @Nokiamobile @NokiamobBlog @Nokiapoweruser @nokia @500px @NatGeoPhotos @ZEISSLenses @MKBHD @TechnicalGuruji "
-                },
-                {
-                    "original_text": "@JosephHourany Herman Miller Embody",
-                    "text": "@JosephHourany Herman Miller Embody"
-                },
-                {
-                    "original_text": "been a whole year y\\u2019all where\\u2019s that new LA setup @madeon https://t.co/TrcQTBYLFG",
-                    "text": "been a whole year y where that new LA setup @madeon "
-                },
-                {
-                    "original_text": "@MKBHD ok but look at my iphone pic https://t.co/c5mH4uYvT3",
-                    "text": "@MKBHD ok but look at my iphone pic "
-                },
-                {
-                    "original_text": "@MKBHD $1,300... Do you have a cheaper recommendation? \\U0001f602\\n\\nPS You should do a review of chairs at different price points",
-                    "text": "@MKBHD $1,300... Do you have a cheaper recommendation? You should do a review of chairs at different price points"
-                }
-            ],
-            "pos": [
-                {
-                    "original_text": "I have still never once heard this song. This makes me special. Please acknowledge that. https://t.co/j5h8RxHNSL",
-                    "text": "I have still never once heard this song. This makes me special. Please acknowledge that. "
-                },
-                {
-                    "original_text": "@MKBHD Not in Utah lol https://t.co/rN1ksTZgfL",
-                    "text": "@MKBHD Not in Utah lol "
-                },
-                {
-                    "original_text": "Internet content I follow like a religion.\\n@MKBHD @donut_media @zakadotheboxer @TSOLBR @VusiThembekwayo @garyvee @ColdFusion_TV @sWooZ1e @verge part1\\U0001f64c\\U0001f3ff",
-                    "text": "Internet content I follow like a religion. @MKBHD @donut_media @zakadotheboxer @TSOLBR @VusiThembekwayo @garyvee @ColdFusion_TV @sWooZ1e @verge part1 "
-                },
-                {
-                    "original_text": "Hey @MKBHD\\n#AskMKBHD so from last year we saw phones coming out with 2rear cameras, and this year there r devices like Huawei to come up with 3rear cameras(P20)!!! \\n\\nWhat are your thoughts on this type of Camera setup in phones??\\nWhat's the extreme limit...? \\nLove ur videos \\U0001f44c\\U0001f60e",
-                    "text": "Hey @MKBHD #AskMKBHD so from last year we saw phones coming out with 2rear cameras, and this year there r devices like Huawei to come up with 3rear cameras(P20)!!! What are your thoughts on this type of Camera setup in phones?? What's the extreme limit...? Love ur videos "
-                },
-                {
-                    "original_text": "@MKBHD Notch support in Android P. Why is that happening ? #askMKBHD",
-                    "text": "@MKBHD Notch support in Android P. Why is that happening ? #askMKBHD"
-                }
-            ]
-        },
-        "noun_based_importance": {},
-        "timeline": {
-            "neg": {
-                "2018-03-26 00:00:00": 5,
-                "2018-03-26 01:00:00": 2,
-                "2018-03-26 02:00:00": 3,
-                "2018-03-26 03:00:00": 3,
-                "2018-03-26 04:00:00": 6,
-                "2018-03-26 05:00:00": 3,
-                "2018-03-26 06:00:00": 10,
-                "2018-03-26 07:00:00": 5,
-                "2018-03-26 08:00:00": 5,
-                "2018-03-26 09:00:00": 6,
-                "2018-03-26 10:00:00": 2
-            },
-            "neu": {
-                "2018-03-26 00:00:00": 32,
-                "2018-03-26 01:00:00": 23,
-                "2018-03-26 02:00:00": 31,
-                "2018-03-26 03:00:00": 15,
-                "2018-03-26 04:00:00": 27,
-                "2018-03-26 05:00:00": 23,
-                "2018-03-26 06:00:00": 26,
-                "2018-03-26 07:00:00": 46,
-                "2018-03-26 08:00:00": 22,
-                "2018-03-26 09:00:00": 36,
-                "2018-03-26 10:00:00": 32
-            },
-            "pos": {
-                "2018-03-26 00:00:00": 10,
-                "2018-03-26 01:00:00": 22,
-                "2018-03-26 02:00:00": 9,
-                "2018-03-26 03:00:00": 13,
-                "2018-03-26 04:00:00": 16,
-                "2018-03-26 05:00:00": 13,
-                "2018-03-26 06:00:00": 12,
-                "2018-03-26 07:00:00": 10,
-                "2018-03-26 08:00:00": 8,
-                "2018-03-26 09:00:00": 11,
-                "2018-03-26 10:00:00": 23
-            }
-        },
-        "total_sentiment": {
-            "neg": 50,
-            "neu": 313,
-            "pos": 147
-        }
-    }
-}];
-                var positiveTimeline = [], negativeTimeline = [], neutralTimeline = [], totalTimeline = [];
-                for(var row in maps[0]["contents"]["timeline"]){
-                    for(var timeline in maps[0]["contents"]["timeline"][row]){
-                        if(row === "pos"){
-
-                            positiveTimeline.push(maps[0]["contents"]["timeline"][row][timeline]);
-                            totalTimeline.push(timeline);
-
-                        }
-                        else if(row === "neg"){
-                            negativeTimeline.push(maps[0]["contents"]["timeline"][row][timeline]);
-                        }
-                        else if(row === "neu"){
-                            neutralTimeline.push(maps[0]["contents"]["timeline"][row][timeline]);
-                        }
-
-
-                    }
-                }
-                totalTimeline.sort();
-
-                var lineChartData = {
-                    labels: totalTimeline,
-                    datasets: [{
-                        label: 'Positive',
-                        borderColor: "#4CD900",
-                        backgroundColor: "#4CD900",
-                        fill: false,
-                        data: positiveTimeline,
-                        yAxisID: 'y-axis-1',
-                    }, {
-                        label: 'Negative',
-                        borderColor: window.chartColors.red,
-                        backgroundColor: window.chartColors.red,
-                        fill: false,
-                        data: negativeTimeline,
-                        yAxisID: 'y-axis-2'
-                    },
-                        {
-                            label: 'Neutral',
-                            borderColor: window.chartColors.blue,
-                            backgroundColor: window.chartColors.blue,
-                            fill: false,
-                            data: neutralTimeline,
-                            yAxisID: 'y-axis-3'
-                        }]
-                };
-                for(var row in maps[0]["contents"]["geographic_sentiments"]){
-                    if(row == "Others" || row == "Lakshadweep" || row == "Dadra and Nagar Haveli"
-                        || row == "Andaman and Nicobar" || row == "Daman and Diu" || row == "Pondicherry"){
-                        continue;
-                    }
-                    states.push(row);
-                }
-                var path = "assets/images/maps/";
-                states.forEach(function(value, index){
-                    var randomVal = Math.floor(Math.random() * 4);
-                    var mapColor;
-                    var maxCount = Math.max(maps[0]["contents"]["geographic_sentiments"][value]["pos"],
-                        maps[0]["contents"]["geographic_sentiments"][value]["neg"],
-                        maps[0]["contents"]["geographic_sentiments"][value]["neu"]);
-                    if(maxCount === 0){
-                        mapColor = "grey";
-                    }
-                    else if(maxCount === maps[0]["contents"]["geographic_sentiments"][value]["pos"]){
-                        mapColor = "green";
-                    }
-                    else if(maxCount === maps[0]["contents"]["geographic_sentiments"][value]["neg"]){
-                        mapColor = "red";
-                    }
-                    else if(maxCount === maps[0]["contents"]["geographic_sentiments"][value]["neu"]){
-                        mapColor = "blue";
-                    }
-                    else{
-                        mapColor = "grey";
-                    }
-                    var temp = '';
-                    temp += value;
-                    temp += '/';
-                    temp += (value + '_' + mapColor + '.png');
-                    temp = path + temp;
-                    var currentElement = "";
-                    currentElement += "<img class='overlayImage' src='{{ baseUrl }}";
-                    currentElement += temp;
-                    currentElement += " ' >";
-                    document.getElementById("india-map").innerHTML += currentElement;
-                });
-
-                var totalTweetCount = 0;
-                var negativeTweetCount, positiveTweetCount, neutralTweetCount;
-                positiveTweetCount = 0;
-                for (var row in maps[0]["contents"]["timeline"]["pos"]) {
-                    positiveTweetCount = parseInt(maps[0]["contents"]["timeline"]["pos"][row]) + positiveTweetCount;
-                }
-                negativeTweetCount = 0;
-                for (var row in maps[0]["contents"]["timeline"]["neg"]) {
-                    negativeTweetCount = parseInt(maps[0]["contents"]["timeline"]["neg"][row]) + negativeTweetCount;
-                }
-                neutralTweetCount = 0;
-                for (var row in maps[0]["contents"]["timeline"]["neu"]) {
-                    neutralTweetCount = parseInt(maps[0]["contents"]["timeline"]["neu"][row]) + neutralTweetCount;
-                }
-                totalTweetCount = 0;
-                totalTweetCount = positiveTweetCount + neutralTweetCount + negativeTweetCount;
-                positivePercent = Math.round(((parseFloat(positiveTweetCount / totalTweetCount)) * 100) * 100) / 100;
-                negativePercent = Math.round(((parseFloat(negativeTweetCount / totalTweetCount)) * 100) * 100) / 100;
-                neutralPercent = Math.round(parseFloat(100 - positivePercent - negativePercent) * 100) / 100;
-                var dataPercent = [];
-                dataPercent.push(positivePercent);
-                dataPercent.push(negativePercent);
-                dataPercent.push(neutralPercent);
-                var config = {
-                    type: 'doughnut',
-                    data: {
-                        datasets: [{
-                            data: dataPercent,
-                            backgroundColor: ["#4CD900", "#FF0000", "#007AFF"
-
-                            ],
-                            label: 'Sentiment Analysis'
-                        }],
-                        labels: [
-                            'Positive',
-                            'Negative',
-                            'Neutral'
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Sentiment Analysis'
-                        },
-                        tooltips: {
-                           callbacks: {
-                              label: function(tooltipItem, data) {
-                                 var label = data.labels[tooltipItem.index];
-                                 var _data = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                                 var data = /\./.test(_data) ? _data.toFixed(2) : _data;
-                                 return label + ' - ' + data + '%';
-                              }
-                           }
-                        },
-                        animation: {
-                            animateScale: true,
-                            animateRotate: true,
-                            duration: 4000
-                        }
-                    }
-                };
-                var maleData = [], femaleData = [];
-                for(var row in maps[0]["contents"]["gender_details"]["M"]){
-                    maleData.push(maps[0]["contents"]["gender_details"]["M"][row]);
-
-                }
-                for(var row in maps[0]["contents"]["gender_details"]["F"]){
-                    femaleData.push(maps[0]["contents"]["gender_details"]["F"][row]);
-                }
-
-                var genders = ["Male", "Female"];
-                var color = Chart.helpers.color;
-                var barChartData = {
-                    labels: ["Male", "Female"],
-                    datasets: [
-                        {
-                            label: "Positive",
-                            backgroundColor: "#4CD900",
-                            data: [maleData[2], femaleData[2]]
-                        },
-                        {
-                            label: "Negative",
-                            backgroundColor: "#FF0000",
-                            data: [maleData[0], femaleData[0]]
-                        },
-                        {
-                            label: "Neutral",
-                            backgroundColor: "#007AFF",
-                            data: [maleData[1], femaleData[1]]
-                        }
-                    ]
-                };
-
-                window.onload = function() {
-                    var ctx = document.getElementById('sentiment-bar-chart').getContext('2d');
-                    window.myBar = new Chart(ctx, {
-                        type: 'bar',
-                        data: barChartData,
-                        options: {
-                            responsive: true,
-                            legend: {
-                                position: 'top',
-                            },
-                            title: {
-                                display: true,
-                                text: 'Sentiment Analysis'
-                            },
-                            animation: {
-                                duration: 4000,
-                                easing: 'linear'
-                            }
-
-                        }
-                    });
-                    var ctx = document.getElementById('chart-area').getContext('2d');
-                    window.myDoughnut = new Chart(ctx, config);
-                    var ctx = document.getElementById('canvas').getContext('2d');
-                    window.myLine = Chart.Line(ctx, {
-
-                        data: lineChartData,
-                        options: {
-                            responsive: true,
-                            hoverMode: 'index',
-                            stacked: false,
-                            title: {
-                                display: true,
-                                text: 'Timeline Chart'
-                            },
-                            scales: {
-                                yAxes: [{
-                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                                    display: true,
-                                    position: 'left',
-                                    id: 'y-axis-1',
-                                }, {
-                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                                    display: true,
-                                    position: 'right',
-                                    id: 'y-axis-2',
-
-                                    // grid line settings
-                                    gridLines: {
-                                        drawOnChartArea: false, // only want the grid lines for one axis to show up
-                                    }
-                                },{
-                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                                    display: true,
-                                    position: 'right',
-                                    id: 'y-axis-3',
-
-                                    // grid line settings
-                                    gridLines: {
-                                        drawOnChartArea: false, // only want the grid lines for one axis to show up
-                                    },
-                                }],
-                            },
-                            animation: {
-                                duration: 4000,
-                                easing: 'linear'
-                            }
-                        }
-                    });
-
-                };
-
-                for(var tweet in maps[0]["contents"]["important_tweets"]["pos"]){
-                    positiveTweets.textContent += ((maps[0]["contents"]["important_tweets"]["pos"][tweet]["original_text"]));
-                }
-                for(var tweet in maps[0]["contents"]["important_tweets"]["neg"]){
-                    negativeTweets.textContent += ((maps[0]["contents"]["important_tweets"]["neg"][tweet]["original_text"]));
-                }
-            }
-
-            generateAll();
-
-            </script>
-        </div>
-        </div>
-
+{#            <br>#}
+{#    <br>#}
+{#    <br>    <br>#}
+{#    <br>#}
+{#    <br>#}
+{#        <div class="map-areas">#}
+{#            <br>#}
+{#            <br>#}
+{#            <br>#}
+{#            <br>#}
+{#            <div class="row">#}
+{#            <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">#}
+{#            </div>#}
+{#            <div class="col col-xs-6 col-sm-6 col-md-8 col-lg-8">#}
+{#                <div id="trending-div" class="zero-opacity"></div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="chart-container">#}
+{#            <div id="canvas-holder">#}
+{#		    <canvas id="chart-area"></canvas>#}
+{#	    </div>#}
+{#        </div>#}
+{#        <br>#}
+{#        <br>#}
+{#        <div class="chart-container">#}
+{#            <canvas id="sentiment-bar-chart"></canvas>#}
+{#            <br>#}
+{#            <br>#}
+{#        </div>#}
+{#        <br>#}
+{#        <br>#}
+{#        <div style="background-color: #FFF; height: 750px; border-radius: 8px;" class="chart-container">#}
+{#            <div id="india-map" class="imageWrapper">#}
+{#            </div>#}
+{#            <br>#}
+{#            <br>#}
+{#            <img class="legends" src="{% static 'assets/images/maps/legend.png' %}">#}
+{#        </div>#}
+{#            <br>#}
+{##}
+{##}
+{##}
+{#        <br>#}
+{#        <br>#}
+{#        <br>#}
+{#        <div class="chart-container">#}
+{#            <div>#}
+{#		<canvas id="canvas"></canvas>#}
+{#        </div>#}
+{#        </div>#}
+{#            <br>#}
+{#            <br><br>#}
+{#            <br>#}
+{##}
+{#            <br>#}
+{#            <br>#}
+{#             <div id="positive-important-tweets">#}
+{##}
+{#            </div>#}
+{#            <div id="negative-important-tweets">#}
+{##}
+{#            </div>#}
+{##}
+{#            <script>#}
+{#                 var positiveTweets = document.getElementById("positive-important-tweets");#}
+{#                var negativeTweets = document.getElementById("negative-important-tweets");#}
+{#            function generateAll(){#}
+{#                       {% static "" as baseUrl %}#}
+{#                var states = [];#}
+{#                var maps = [{#}
+{#    "contents": {#}
+{#        "ethnicity": {#}
+{#            "Christian": {#}
+{#                "neg": 22,#}
+{#                "neu": 131,#}
+{#                "pos": 67#}
+{#            },#}
+{#            "Hindu": {#}
+{#                "neg": 16,#}
+{#                "neu": 116,#}
+{#                "pos": 53#}
+{#            },#}
+{#            "Muslim": {#}
+{#                "neg": 12,#}
+{#                "neu": 66,#}
+{#                "pos": 27#}
+{#            }#}
+{#        },#}
+{#        "gender_details": {#}
+{#            "F": {#}
+{#                "neg": 12,#}
+{#                "neu": 72,#}
+{#                "pos": 22#}
+{#            },#}
+{#            "M": {#}
+{#                "neg": 38,#}
+{#                "neu": 241,#}
+{#                "pos": 125#}
+{#            }#}
+{#        },#}
+{#        "geographic_sentiments": {#}
+{#            "Andaman and Nicobar": {#}
+{#                "neg": 0,#}
+{#                "neu": 1,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Andhra Pradesh": {#}
+{#                "neg": 23,#}
+{#                "neu": 139,#}
+{#                "pos": 55#}
+{#            },#}
+{#            "Arunachal Pradesh": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Assam": {#}
+{#                "neg": 2,#}
+{#                "neu": 3,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Bihar": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Chhattisgarh": {#}
+{#                "neg": 0,#}
+{#                "neu": 1,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Dadra and Nagar Haveli": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Daman and Diu": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Delhi": {#}
+{#                "neg": 0,#}
+{#                "neu": 9,#}
+{#                "pos": 3#}
+{#            },#}
+{#            "Goa": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 1#}
+{#            },#}
+{#            "Gujarat": {#}
+{#                "neg": 0,#}
+{#                "neu": 5,#}
+{#                "pos": 2#}
+{#            },#}
+{#            "Haryana": {#}
+{#                "neg": 1,#}
+{#                "neu": 1,#}
+{#                "pos": 2#}
+{#            },#}
+{#            "Himachal Pradesh": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Jammu and Kashmir": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Jharkhand": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Karnataka": {#}
+{#                "neg": 1,#}
+{#                "neu": 5,#}
+{#                "pos": 2#}
+{#            },#}
+{#            "Kerala": {#}
+{#                "neg": 0,#}
+{#                "neu": 3,#}
+{#                "pos": 1#}
+{#            },#}
+{#            "Lakshadweep": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Madhya Pradesh": {#}
+{#                "neg": 0,#}
+{#                "neu": 2,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Maharashtra": {#}
+{#                "neg": 2,#}
+{#                "neu": 12,#}
+{#                "pos": 9#}
+{#            },#}
+{#            "Manipur": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Meghalaya": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 1#}
+{#            },#}
+{#            "Mizoram": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Nagaland": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Orissa": {#}
+{#                "neg": 0,#}
+{#                "neu": 2,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Others": {#}
+{#                "neg": 15,#}
+{#                "neu": 106,#}
+{#                "pos": 50#}
+{#            },#}
+{#            "Pondicherry": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Punjab": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 2#}
+{#            },#}
+{#            "Rajasthan": {#}
+{#                "neg": 2,#}
+{#                "neu": 3,#}
+{#                "pos": 6#}
+{#            },#}
+{#            "Sikkim": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Tamil Nadu": {#}
+{#                "neg": 2,#}
+{#                "neu": 7,#}
+{#                "pos": 5#}
+{#            },#}
+{#            "Telangana": {#}
+{#                "neg": 1,#}
+{#                "neu": 3,#}
+{#                "pos": 5#}
+{#            },#}
+{#            "Tripura": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "Uttar Pradesh": {#}
+{#                "neg": 1,#}
+{#                "neu": 7,#}
+{#                "pos": 2#}
+{#            },#}
+{#            "Uttarakhand": {#}
+{#                "neg": 0,#}
+{#                "neu": 0,#}
+{#                "pos": 0#}
+{#            },#}
+{#            "West Bengal": {#}
+{#                "neg": 0,#}
+{#                "neu": 4,#}
+{#                "pos": 1#}
+{#            }#}
+{#        },#}
+{#        "important_tweets": {#}
+{#            "neg": [#}
+{#                {#}
+{#                    "original_text": "The fuck. I've never heard of this video yet it's the most viewed video on YouTube by 1.5 BILLION views. WHAT. I don't even understand, it's just a very generic music video to a normal sounding pop song?! https://t.co/qWZgbhGN1J https://t.co/WenzoU1xd4",#}
+{#                    "text": "The fuck. I've never heard of this video yet it's the most viewed video on YouTube by 1.5 BILLION views. WHAT. I don't even understand, it's just a very generic music video to a normal sounding pop song?! "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@MKBHD #askMKBHD Hey Marques.... What are your thoughts on the Cambridge Analytica Facebook Data Scandal?? Is it the time that we delete Facebook? What\\u2019s this hype about though?  What are your views on this??",#}
+{#                    "text": "@MKBHD #askMKBHD Hey Marques.... What are your thoughts on the Cambridge Analytica Facebook Data Scandal?? Is it the time that we delete Facebook? What this hype about though? What are your views on this??"#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@WOFginger @MKBHD Only a first few tweets tho. Charges apply for afterwards. \\U0001f61b",#}
+{#                    "text": "@WOFginger @MKBHD Only a first few tweets tho. Charges apply for afterwards. "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@MKBHD What da Hell is happening with Facebook ?!",#}
+{#                    "text": "@MKBHD What da Hell is happening with Facebook ?!"#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@MKBHD What's wrong with you, did Apple pay you to tweet about them all the time?",#}
+{#                    "text": "@MKBHD What's wrong with you, did Apple pay you to tweet about them all the time?"#}
+{#                }#}
+{#            ],#}
+{#            "neu": [#}
+{#                {#}
+{#                    "original_text": "Shot on Nokia 8 processed \\n@Nokiamobile @NokiamobBlog @Nokiapoweruser @nokia @500px @NatGeoPhotos @ZEISSLenses @MKBHD @TechnicalGuruji https://t.co/u4qWqpUC13",#}
+{#                    "text": "Shot on Nokia 8 processed @Nokiamobile @NokiamobBlog @Nokiapoweruser @nokia @500px @NatGeoPhotos @ZEISSLenses @MKBHD @TechnicalGuruji "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@JosephHourany Herman Miller Embody",#}
+{#                    "text": "@JosephHourany Herman Miller Embody"#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "been a whole year y\\u2019all where\\u2019s that new LA setup @madeon https://t.co/TrcQTBYLFG",#}
+{#                    "text": "been a whole year y where that new LA setup @madeon "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@MKBHD ok but look at my iphone pic https://t.co/c5mH4uYvT3",#}
+{#                    "text": "@MKBHD ok but look at my iphone pic "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@MKBHD $1,300... Do you have a cheaper recommendation? \\U0001f602\\n\\nPS You should do a review of chairs at different price points",#}
+{#                    "text": "@MKBHD $1,300... Do you have a cheaper recommendation? You should do a review of chairs at different price points"#}
+{#                }#}
+{#            ],#}
+{#            "pos": [#}
+{#                {#}
+{#                    "original_text": "I have still never once heard this song. This makes me special. Please acknowledge that. https://t.co/j5h8RxHNSL",#}
+{#                    "text": "I have still never once heard this song. This makes me special. Please acknowledge that. "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@MKBHD Not in Utah lol https://t.co/rN1ksTZgfL",#}
+{#                    "text": "@MKBHD Not in Utah lol "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "Internet content I follow like a religion.\\n@MKBHD @donut_media @zakadotheboxer @TSOLBR @VusiThembekwayo @garyvee @ColdFusion_TV @sWooZ1e @verge part1\\U0001f64c\\U0001f3ff",#}
+{#                    "text": "Internet content I follow like a religion. @MKBHD @donut_media @zakadotheboxer @TSOLBR @VusiThembekwayo @garyvee @ColdFusion_TV @sWooZ1e @verge part1 "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "Hey @MKBHD\\n#AskMKBHD so from last year we saw phones coming out with 2rear cameras, and this year there r devices like Huawei to come up with 3rear cameras(P20)!!! \\n\\nWhat are your thoughts on this type of Camera setup in phones??\\nWhat's the extreme limit...? \\nLove ur videos \\U0001f44c\\U0001f60e",#}
+{#                    "text": "Hey @MKBHD #AskMKBHD so from last year we saw phones coming out with 2rear cameras, and this year there r devices like Huawei to come up with 3rear cameras(P20)!!! What are your thoughts on this type of Camera setup in phones?? What's the extreme limit...? Love ur videos "#}
+{#                },#}
+{#                {#}
+{#                    "original_text": "@MKBHD Notch support in Android P. Why is that happening ? #askMKBHD",#}
+{#                    "text": "@MKBHD Notch support in Android P. Why is that happening ? #askMKBHD"#}
+{#                }#}
+{#            ]#}
+{#        },#}
+{#        "noun_based_importance": {},#}
+{#        "timeline": {#}
+{#            "neg": {#}
+{#                "2018-03-26 00:00:00": 5,#}
+{#                "2018-03-26 01:00:00": 2,#}
+{#                "2018-03-26 02:00:00": 3,#}
+{#                "2018-03-26 03:00:00": 3,#}
+{#                "2018-03-26 04:00:00": 6,#}
+{#                "2018-03-26 05:00:00": 3,#}
+{#                "2018-03-26 06:00:00": 10,#}
+{#                "2018-03-26 07:00:00": 5,#}
+{#                "2018-03-26 08:00:00": 5,#}
+{#                "2018-03-26 09:00:00": 6,#}
+{#                "2018-03-26 10:00:00": 2#}
+{#            },#}
+{#            "neu": {#}
+{#                "2018-03-26 00:00:00": 32,#}
+{#                "2018-03-26 01:00:00": 23,#}
+{#                "2018-03-26 02:00:00": 31,#}
+{#                "2018-03-26 03:00:00": 15,#}
+{#                "2018-03-26 04:00:00": 27,#}
+{#                "2018-03-26 05:00:00": 23,#}
+{#                "2018-03-26 06:00:00": 26,#}
+{#                "2018-03-26 07:00:00": 46,#}
+{#                "2018-03-26 08:00:00": 22,#}
+{#                "2018-03-26 09:00:00": 36,#}
+{#                "2018-03-26 10:00:00": 32#}
+{#            },#}
+{#            "pos": {#}
+{#                "2018-03-26 00:00:00": 10,#}
+{#                "2018-03-26 01:00:00": 22,#}
+{#                "2018-03-26 02:00:00": 9,#}
+{#                "2018-03-26 03:00:00": 13,#}
+{#                "2018-03-26 04:00:00": 16,#}
+{#                "2018-03-26 05:00:00": 13,#}
+{#                "2018-03-26 06:00:00": 12,#}
+{#                "2018-03-26 07:00:00": 10,#}
+{#                "2018-03-26 08:00:00": 8,#}
+{#                "2018-03-26 09:00:00": 11,#}
+{#                "2018-03-26 10:00:00": 23#}
+{#            }#}
+{#        },#}
+{#        "total_sentiment": {#}
+{#            "neg": 50,#}
+{#            "neu": 313,#}
+{#            "pos": 147#}
+{#        }#}
+{#    }#}
+{#}];#}
+{#                var positiveTimeline = [], negativeTimeline = [], neutralTimeline = [], totalTimeline = [];#}
+{#                for(var row in maps[0]["contents"]["timeline"]){#}
+{#                    for(var timeline in maps[0]["contents"]["timeline"][row]){#}
+{#                        if(row === "pos"){#}
+{##}
+{#                            positiveTimeline.push(maps[0]["contents"]["timeline"][row][timeline]);#}
+{#                            totalTimeline.push(timeline);#}
+{##}
+{#                        }#}
+{#                        else if(row === "neg"){#}
+{#                            negativeTimeline.push(maps[0]["contents"]["timeline"][row][timeline]);#}
+{#                        }#}
+{#                        else if(row === "neu"){#}
+{#                            neutralTimeline.push(maps[0]["contents"]["timeline"][row][timeline]);#}
+{#                        }#}
+{##}
+{##}
+{#                    }#}
+{#                }#}
+{#                totalTimeline.sort();#}
+{##}
+{#                var lineChartData = {#}
+{#                    labels: totalTimeline,#}
+{#                    datasets: [{#}
+{#                        label: 'Positive',#}
+{#                        borderColor: "#4CD900",#}
+{#                        backgroundColor: "#4CD900",#}
+{#                        fill: false,#}
+{#                        data: positiveTimeline,#}
+{#                        yAxisID: 'y-axis-1',#}
+{#                    }, {#}
+{#                        label: 'Negative',#}
+{#                        borderColor: window.chartColors.red,#}
+{#                        backgroundColor: window.chartColors.red,#}
+{#                        fill: false,#}
+{#                        data: negativeTimeline,#}
+{#                        yAxisID: 'y-axis-2'#}
+{#                    },#}
+{#                        {#}
+{#                            label: 'Neutral',#}
+{#                            borderColor: window.chartColors.blue,#}
+{#                            backgroundColor: window.chartColors.blue,#}
+{#                            fill: false,#}
+{#                            data: neutralTimeline,#}
+{#                            yAxisID: 'y-axis-3'#}
+{#                        }]#}
+{#                };#}
+{#                for(var row in maps[0]["contents"]["geographic_sentiments"]){#}
+{#                    if(row == "Others" || row == "Lakshadweep" || row == "Dadra and Nagar Haveli"#}
+{#                        || row == "Andaman and Nicobar" || row == "Daman and Diu" || row == "Pondicherry"){#}
+{#                        continue;#}
+{#                    }#}
+{#                    states.push(row);#}
+{#                }#}
+{#                var path = "assets/images/maps/";#}
+{#                states.forEach(function(value, index){#}
+{#                    var randomVal = Math.floor(Math.random() * 4);#}
+{#                    var mapColor;#}
+{#                    var maxCount = Math.max(maps[0]["contents"]["geographic_sentiments"][value]["pos"],#}
+{#                        maps[0]["contents"]["geographic_sentiments"][value]["neg"],#}
+{#                        maps[0]["contents"]["geographic_sentiments"][value]["neu"]);#}
+{#                    if(maxCount === 0){#}
+{#                        mapColor = "grey";#}
+{#                    }#}
+{#                    else if(maxCount === maps[0]["contents"]["geographic_sentiments"][value]["pos"]){#}
+{#                        mapColor = "green";#}
+{#                    }#}
+{#                    else if(maxCount === maps[0]["contents"]["geographic_sentiments"][value]["neg"]){#}
+{#                        mapColor = "red";#}
+{#                    }#}
+{#                    else if(maxCount === maps[0]["contents"]["geographic_sentiments"][value]["neu"]){#}
+{#                        mapColor = "blue";#}
+{#                    }#}
+{#                    else{#}
+{#                        mapColor = "grey";#}
+{#                    }#}
+{#                    var temp = '';#}
+{#                    temp += value;#}
+{#                    temp += '/';#}
+{#                    temp += (value + '_' + mapColor + '.png');#}
+{#                    temp = path + temp;#}
+{#                    var currentElement = "";#}
+{#                    currentElement += "<img class='overlayImage' src='{{ baseUrl }}";#}
+{#                    currentElement += temp;#}
+{#                    currentElement += " ' >";#}
+{#                    document.getElementById("india-map").innerHTML += currentElement;#}
+{#                });#}
+{##}
+{#                var totalTweetCount = 0;#}
+{#                var negativeTweetCount, positiveTweetCount, neutralTweetCount;#}
+{#                positiveTweetCount = 0;#}
+{#                for (var row in maps[0]["contents"]["timeline"]["pos"]) {#}
+{#                    positiveTweetCount = parseInt(maps[0]["contents"]["timeline"]["pos"][row]) + positiveTweetCount;#}
+{#                }#}
+{#                negativeTweetCount = 0;#}
+{#                for (var row in maps[0]["contents"]["timeline"]["neg"]) {#}
+{#                    negativeTweetCount = parseInt(maps[0]["contents"]["timeline"]["neg"][row]) + negativeTweetCount;#}
+{#                }#}
+{#                neutralTweetCount = 0;#}
+{#                for (var row in maps[0]["contents"]["timeline"]["neu"]) {#}
+{#                    neutralTweetCount = parseInt(maps[0]["contents"]["timeline"]["neu"][row]) + neutralTweetCount;#}
+{#                }#}
+{#                totalTweetCount = 0;#}
+{#                totalTweetCount = positiveTweetCount + neutralTweetCount + negativeTweetCount;#}
+{#                positivePercent = Math.round(((parseFloat(positiveTweetCount / totalTweetCount)) * 100) * 100) / 100;#}
+{#                negativePercent = Math.round(((parseFloat(negativeTweetCount / totalTweetCount)) * 100) * 100) / 100;#}
+{#                neutralPercent = Math.round(parseFloat(100 - positivePercent - negativePercent) * 100) / 100;#}
+{#                var dataPercent = [];#}
+{#                dataPercent.push(positivePercent);#}
+{#                dataPercent.push(negativePercent);#}
+{#                dataPercent.push(neutralPercent);#}
+{#                var config = {#}
+{#                    type: 'doughnut',#}
+{#                    data: {#}
+{#                        datasets: [{#}
+{#                            data: dataPercent,#}
+{#                            backgroundColor: ["#4CD900", "#FF0000", "#007AFF"#}
+{##}
+{#                            ],#}
+{#                            label: 'Sentiment Analysis'#}
+{#                        }],#}
+{#                        labels: [#}
+{#                            'Positive',#}
+{#                            'Negative',#}
+{#                            'Neutral'#}
+{#                        ]#}
+{#                    },#}
+{#                    options: {#}
+{#                        responsive: true,#}
+{#                        legend: {#}
+{#                            position: 'top',#}
+{#                        },#}
+{#                        title: {#}
+{#                            display: true,#}
+{#                            text: 'Sentiment Analysis'#}
+{#                        },#}
+{#                        tooltips: {#}
+{#                           callbacks: {#}
+{#                              label: function(tooltipItem, data) {#}
+{#                                 var label = data.labels[tooltipItem.index];#}
+{#                                 var _data = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];#}
+{#                                 var data = /\./.test(_data) ? _data.toFixed(2) : _data;#}
+{#                                 return label + ' - ' + data + '%';#}
+{#                              }#}
+{#                           }#}
+{#                        },#}
+{#                        animation: {#}
+{#                            animateScale: true,#}
+{#                            animateRotate: true,#}
+{#                            duration: 4000#}
+{#                        }#}
+{#                    }#}
+{#                };#}
+{#                var maleData = [], femaleData = [];#}
+{#                for(var row in maps[0]["contents"]["gender_details"]["M"]){#}
+{#                    maleData.push(maps[0]["contents"]["gender_details"]["M"][row]);#}
+{##}
+{#                }#}
+{#                for(var row in maps[0]["contents"]["gender_details"]["F"]){#}
+{#                    femaleData.push(maps[0]["contents"]["gender_details"]["F"][row]);#}
+{#                }#}
+{##}
+{#                var genders = ["Male", "Female"];#}
+{#                var color = Chart.helpers.color;#}
+{#                var barChartData = {#}
+{#                    labels: ["Male", "Female"],#}
+{#                    datasets: [#}
+{#                        {#}
+{#                            label: "Positive",#}
+{#                            backgroundColor: "#4CD900",#}
+{#                            data: [maleData[2], femaleData[2]]#}
+{#                        },#}
+{#                        {#}
+{#                            label: "Negative",#}
+{#                            backgroundColor: "#FF0000",#}
+{#                            data: [maleData[0], femaleData[0]]#}
+{#                        },#}
+{#                        {#}
+{#                            label: "Neutral",#}
+{#                            backgroundColor: "#007AFF",#}
+{#                            data: [maleData[1], femaleData[1]]#}
+{#                        }#}
+{#                    ]#}
+{#                };#}
+{##}
+{#                window.onload = function() {#}
+{#                    var ctx = document.getElementById('sentiment-bar-chart').getContext('2d');#}
+{#                    window.myBar = new Chart(ctx, {#}
+{#                        type: 'bar',#}
+{#                        data: barChartData,#}
+{#                        options: {#}
+{#                            responsive: true,#}
+{#                            legend: {#}
+{#                                position: 'top',#}
+{#                            },#}
+{#                            title: {#}
+{#                                display: true,#}
+{#                                text: 'Sentiment Analysis'#}
+{#                            },#}
+{#                            animation: {#}
+{#                                duration: 4000,#}
+{#                                easing: 'linear'#}
+{#                            }#}
+{##}
+{#                        }#}
+{#                    });#}
+{#                    var ctx = document.getElementById('chart-area').getContext('2d');#}
+{#                    window.myDoughnut = new Chart(ctx, config);#}
+{#                    var ctx = document.getElementById('canvas').getContext('2d');#}
+{#                    window.myLine = Chart.Line(ctx, {#}
+{##}
+{#                        data: lineChartData,#}
+{#                        options: {#}
+{#                            responsive: true,#}
+{#                            hoverMode: 'index',#}
+{#                            stacked: false,#}
+{#                            title: {#}
+{#                                display: true,#}
+{#                                text: 'Timeline Chart'#}
+{#                            },#}
+{#                            scales: {#}
+{#                                yAxes: [{#}
+{#                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance#}
+{#                                    display: true,#}
+{#                                    position: 'left',#}
+{#                                    id: 'y-axis-1',#}
+{#                                }, {#}
+{#                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance#}
+{#                                    display: true,#}
+{#                                    position: 'right',#}
+{#                                    id: 'y-axis-2',#}
+{##}
+{#                                    // grid line settings#}
+{#                                    gridLines: {#}
+{#                                        drawOnChartArea: false, // only want the grid lines for one axis to show up#}
+{#                                    }#}
+{#                                },{#}
+{#                                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance#}
+{#                                    display: true,#}
+{#                                    position: 'right',#}
+{#                                    id: 'y-axis-3',#}
+{##}
+{#                                    // grid line settings#}
+{#                                    gridLines: {#}
+{#                                        drawOnChartArea: false, // only want the grid lines for one axis to show up#}
+{#                                    },#}
+{#                                }],#}
+{#                            },#}
+{#                            animation: {#}
+{#                                duration: 4000,#}
+{#                                easing: 'linear'#}
+{#                            }#}
+{#                        }#}
+{#                    });#}
+{##}
+{#                };#}
+{##}
+{#                for(var tweet in maps[0]["contents"]["important_tweets"]["pos"]){#}
+{#                    positiveTweets.textContent += ((maps[0]["contents"]["important_tweets"]["pos"][tweet]["original_text"]));#}
+{#                }#}
+{#                for(var tweet in maps[0]["contents"]["important_tweets"]["neg"]){#}
+{#                    negativeTweets.textContent += ((maps[0]["contents"]["important_tweets"]["neg"][tweet]["original_text"]));#}
+{#                }#}
+{#            }#}
+{##}
+{#            generateAll();#}
+{##}
+{#            </script>#}
+{#        </div>#}
+{#        </div>#}
+{##}
+{#    </div>#}
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 {% endblock %}
