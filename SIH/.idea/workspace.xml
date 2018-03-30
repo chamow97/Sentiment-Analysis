@@ -27,8 +27,8 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="46" column="32" lean-forward="false" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
+            <state relative-caret-position="-327">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h1#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -40,10 +40,10 @@
       <file leaf-file-name="search.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4050">
-              <caret line="418" column="19" lean-forward="true" selection-start-line="83" selection-start-column="16" selection-end-line="418" selection-end-column="19" />
+            <state relative-caret-position="125">
+              <caret line="450" column="51" lean-forward="false" selection-start-line="450" selection-start-column="51" selection-end-line="450" selection-end-column="51" />
               <folding>
-                <element signature="e#1676#1742#0#HTML" expanded="true" />
+                <element signature="e#1692#1758#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,11 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>christian</find>
-      <find>border</find>
-      <find>search-</find>
-      <find>addE</find>
-      <find>inner</find>
       <find>sentiment-bar-chart</find>
       <find>ease</find>
       <find>rando</find>
@@ -145,6 +140,11 @@
       <find>max-wid</find>
       <find>india</find>
       <find>LineC</find>
+      <find>maps</find>
+      <find>positive-important-tweets</find>
+      <find>positiveTweets</find>
+      <find>Bar</find>
+      <find>green</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -160,8 +160,8 @@
         <option value="$PROJECT_DIR$/sentimentanalysis/urls.py" />
         <option value="$PROJECT_DIR$/sentimentanalysis/static/assets/js/main.js" />
         <option value="$PROJECT_DIR$/sentimentanalysis/static/assets/js/maps.js" />
-        <option value="$PROJECT_DIR$/sentimentanalysis/templates/base.html" />
         <option value="$PROJECT_DIR$/sentimentanalysis/static/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/sentimentanalysis/templates/base.html" />
         <option value="$PROJECT_DIR$/sentimentanalysis/templates/search.html" />
       </list>
     </option>
@@ -423,7 +423,7 @@
         <state relative-caret-position="414">
           <caret line="23" column="101" lean-forward="false" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="101" />
           <folding>
-            <element signature="e#1676#1742#0#HTML" expanded="true" />
+            <element signature="e#1692#1758#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -583,7 +583,7 @@
         <state relative-caret-position="414">
           <caret line="23" column="101" lean-forward="true" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="101" />
           <folding>
-            <element signature="e#1676#1742#0#HTML" expanded="true" />
+            <element signature="e#1692#1758#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -813,17 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="46" column="32" lean-forward="false" selection-start-line="46" selection-start-column="32" selection-end-line="46" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sentimentanalysis/static/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -848,6 +837,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-327">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sentimentanalysis/static/assets/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -858,10 +858,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="418" column="19" lean-forward="true" selection-start-line="83" selection-start-column="16" selection-end-line="418" selection-end-column="19" />
+        <state relative-caret-position="125">
+          <caret line="450" column="51" lean-forward="false" selection-start-line="450" selection-start-column="51" selection-end-line="450" selection-end-column="51" />
           <folding>
-            <element signature="e#1676#1742#0#HTML" expanded="true" />
+            <element signature="e#1692#1758#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
