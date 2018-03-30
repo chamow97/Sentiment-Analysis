@@ -49,17 +49,18 @@
       <file leaf-file-name="results.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="99" column="16" lean-forward="false" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+            <state relative-caret-position="233">
+              <caret line="385" column="78" lean-forward="false" selection-start-line="385" selection-start-column="78" selection-end-line="385" selection-end-column="78" />
               <folding>
-                <element signature="e#1001#1027#0#HTML" expanded="true" />
-                <element signature="e#1283#1401#0#HTML" expanded="true" />
-                <element signature="e#1672#1733#0#HTML" expanded="true" />
-                <element signature="e#1749#1819#0#HTML" expanded="true" />
-                <element signature="e#1950#1971#0#HTML" expanded="true" />
-                <element signature="e#2056#2096#0#HTML" expanded="true" />
-                <element signature="e#2243#2264#0#HTML" expanded="true" />
-                <element signature="e#2315#2355#0#HTML" expanded="true" />
+                <element signature="e#115#174#0#HTML" expanded="true" />
+                <element signature="e#1014#1040#0#HTML" expanded="true" />
+                <element signature="e#1296#1414#0#HTML" expanded="true" />
+                <element signature="e#1685#1746#0#HTML" expanded="true" />
+                <element signature="e#1762#1832#0#HTML" expanded="true" />
+                <element signature="e#1963#1984#0#HTML" expanded="true" />
+                <element signature="e#2069#2109#0#HTML" expanded="true" />
+                <element signature="e#2256#2277#0#HTML" expanded="true" />
+                <element signature="e#2328#2368#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,8 +184,8 @@
         <option value="$PROJECT_DIR$/sentimentanalysis/views.py" />
         <option value="$PROJECT_DIR$/sentimentanalysis/templates/base.html" />
         <option value="$PROJECT_DIR$/sentimentanalysis/static/assets/css/main.css" />
-        <option value="$PROJECT_DIR$/sentimentanalysis/templates/results.html" />
         <option value="$PROJECT_DIR$/sentimentanalysis/templates/search.html" />
+        <option value="$PROJECT_DIR$/sentimentanalysis/templates/results.html" />
       </list>
     </option>
   </component>
@@ -881,17 +882,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="99" column="16" lean-forward="false" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+        <state relative-caret-position="233">
+          <caret line="385" column="78" lean-forward="false" selection-start-line="385" selection-start-column="78" selection-end-line="385" selection-end-column="78" />
           <folding>
-            <element signature="e#1001#1027#0#HTML" expanded="true" />
-            <element signature="e#1283#1401#0#HTML" expanded="true" />
-            <element signature="e#1672#1733#0#HTML" expanded="true" />
-            <element signature="e#1749#1819#0#HTML" expanded="true" />
-            <element signature="e#1950#1971#0#HTML" expanded="true" />
-            <element signature="e#2056#2096#0#HTML" expanded="true" />
-            <element signature="e#2243#2264#0#HTML" expanded="true" />
-            <element signature="e#2315#2355#0#HTML" expanded="true" />
+            <element signature="e#115#174#0#HTML" expanded="true" />
+            <element signature="e#1014#1040#0#HTML" expanded="true" />
+            <element signature="e#1296#1414#0#HTML" expanded="true" />
+            <element signature="e#1685#1746#0#HTML" expanded="true" />
+            <element signature="e#1762#1832#0#HTML" expanded="true" />
+            <element signature="e#1963#1984#0#HTML" expanded="true" />
+            <element signature="e#2069#2109#0#HTML" expanded="true" />
+            <element signature="e#2256#2277#0#HTML" expanded="true" />
+            <element signature="e#2328#2368#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

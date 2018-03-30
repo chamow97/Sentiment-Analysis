@@ -4,8 +4,7 @@
     active
 {% endblock %}
 {% block content %}
-<div class="preload">
-<img src="{% static 'assets/loading1.gif' %}">
+<div style="background-color: black; width: 100%; height: 100%;" class="preload">
 </div>
 
 <div class="content">
@@ -91,11 +90,16 @@ $(function() {
                      dataType: "json",
                      data: JSON.stringify({"key": searchFor}),
                      success: function (data) {
-                        $("#fullScreen").hide();
                          maps = data;
+                         $(".preload").hide();
                          console.log(maps);
                          generateAll();
+                     },
+                    error: function (jqXHR, exception) {
+                        $(".preload").hide();
+                        alert("There was some error!");
                      }
+
                  });
                 generateAll();
                 function generateAll(){
@@ -373,13 +377,13 @@ $(function() {
 
                 for(var row in maps["contents"]["important_tweets"]["pos"]){
                     var html = "<div class='card'><div class='container'><p>";
-                    html += maps["contents"]["important_tweets"]["pos"][row]["original_text"];
+                    html += maps["contents"]["important_tweets"]["pos"][row]["text"];
                     html += "</p></div><br>";
                     positiveTweetContent.innerHTML += html;
                 }
                 for(var row in maps["contents"]["important_tweets"]["neg"]){
                     var html = "<div class='card'><div class='container'><p>";
-                    html += maps["contents"]["important_tweets"]["neg"][row]["original_text"];
+                    html += maps["contents"]["important_tweets"]["neg"][row]["text"];
                     html += "</p></div><br>";
                     negativeTweetContent.innerHTML += html;
                 }
