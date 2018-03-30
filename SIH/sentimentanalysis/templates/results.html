@@ -9,8 +9,11 @@
         <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
             </div>
         <h5 class="searchResults">Search results for {{ searchTerm }} :</h5>
-
-    <br>    <br>
+        <br><br>
+        <center>
+            <a href="../search" class="btn btn-primary">Search Again</a>
+        </center>
+            <br>    <br>
     <br>
     <br>
         <div class="map-areas">
@@ -45,12 +48,18 @@
         </div>
             <br>
             <br><br>
+            <br><br>
             <br>
-            <div class="row" id = "positiveTweetContents">
+            <div style="color: black;" class="twitterContainer positive" id = "positiveTweetContents">
+                <h4 style="color: #4CD900; font-size: 30px;">Positive Tweets</h4>
+                <br>
             </div>
             <br>
             <br>
-            <div class="row" id = "negativeTweetContents">
+            <br>
+            <div class="negative" style="color: black;" id = "negativeTweetContents">
+                <h4 style="color: #FF0000; font-size: 30px;">Negative Tweets</h4>
+                <br>
             </div>
         </div>
     </div>
@@ -336,16 +345,16 @@
 
                 for(var row in maps["contents"]["important_tweets"]["pos"]){
                     var html = "<div class='card'><div class='container'><p>";
-                    html += maps["contents"]["important_tweets"]["pos"][row];
-                    alert(row);
+                    html += maps["contents"]["important_tweets"]["pos"][row]["original_text"];
+                    html += "</p></div><br>";
+                    positiveTweetContent.innerHTML += html;
                 }
-                positiveTweetContent.addText += html;
                 for(var row in maps["contents"]["important_tweets"]["neg"]){
                     var html = "<div class='card'><div class='container'><p>";
-                    html += maps["contents"]["important_tweets"]["neg"][row];
-                    alert(row);
+                    html += maps["contents"]["important_tweets"]["neg"][row]["original_text"];
+                    html += "</p></div><br>";
+                    negativeTweetContent.innerHTML += html;
                 }
-                negativeTweetContent.addText += html;
     }
 
 
