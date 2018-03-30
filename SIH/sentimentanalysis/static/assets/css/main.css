@@ -817,14 +817,6 @@ g path:hover { opacity: .65; }
 }
 
 
-#fullScreen {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-
-}
-
 .twitterContainer{
     margin-top: 900px;
 }
@@ -840,4 +832,13 @@ g path:hover { opacity: .65; }
     font-size: 18px;
     font-weight: bolder;
     margin-left: 100px;
+}
+
+.content {display:none;}
+.preload {
+    width:100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
 }

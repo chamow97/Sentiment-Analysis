@@ -39,8 +39,8 @@
       <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="89" column="35" lean-forward="false" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="35" />
+            <state relative-caret-position="-180">
+              <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -49,17 +49,17 @@
       <file leaf-file-name="results.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="57" lean-forward="true" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
+            <state relative-caret-position="250">
+              <caret line="99" column="16" lean-forward="false" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
               <folding>
-                <element signature="e#710#736#0#HTML" expanded="true" />
-                <element signature="e#993#1111#0#HTML" expanded="true" />
-                <element signature="e#1382#1443#0#HTML" expanded="true" />
-                <element signature="e#1459#1529#0#HTML" expanded="true" />
-                <element signature="e#1660#1681#0#HTML" expanded="true" />
-                <element signature="e#1766#1806#0#HTML" expanded="true" />
-                <element signature="e#1953#1974#0#HTML" expanded="true" />
-                <element signature="e#2025#2065#0#HTML" expanded="true" />
+                <element signature="e#1001#1027#0#HTML" expanded="true" />
+                <element signature="e#1283#1401#0#HTML" expanded="true" />
+                <element signature="e#1672#1733#0#HTML" expanded="true" />
+                <element signature="e#1749#1819#0#HTML" expanded="true" />
+                <element signature="e#1950#1971#0#HTML" expanded="true" />
+                <element signature="e#2056#2096#0#HTML" expanded="true" />
+                <element signature="e#2243#2264#0#HTML" expanded="true" />
+                <element signature="e#2315#2355#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,8 +112,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sentimentanalysis/static/assets/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="810" column="19" lean-forward="false" selection-start-line="810" selection-start-column="19" selection-end-line="810" selection-end-column="19" />
+            <state relative-caret-position="340">
+              <caret line="843" column="1" lean-forward="false" selection-start-line="843" selection-start-column="1" selection-end-line="843" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -133,7 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>positiveTweets</find>
       <find>Bar</find>
       <find>topic</find>
       <find>banner</find>
@@ -153,16 +152,17 @@
       <find>lege</find>
       <find>overlay</find>
       <find>legen</find>
-      <find>india</find>
       <find>inline-block</find>
       <find>positiveTweet</find>
       <find>gender_details</find>
       <find>positiveTweetContent</find>
       <find>india-map</find>
-      <find>positiveTwee</find>
       <find>inline</find>
       <find>positive</find>
+      <find>india</find>
       <find>searchRes</find>
+      <find>key</find>
+      <find>positiveTwee</find>
     </findStrings>
     <replaceStrings>
       <replace>maps</replace>
@@ -179,12 +179,12 @@
         <option value="$PROJECT_DIR$/sentimentanalysis/templates/index.html" />
         <option value="$PROJECT_DIR$/sentimentanalysis/static/assets/js/main.js" />
         <option value="$PROJECT_DIR$/sentimentanalysis/static/assets/js/maps.js" />
-        <option value="$PROJECT_DIR$/sentimentanalysis/templates/search.html" />
         <option value="$PROJECT_DIR$/sentimentanalysis/urls.py" />
         <option value="$PROJECT_DIR$/sentimentanalysis/views.py" />
         <option value="$PROJECT_DIR$/sentimentanalysis/templates/base.html" />
         <option value="$PROJECT_DIR$/sentimentanalysis/static/assets/css/main.css" />
         <option value="$PROJECT_DIR$/sentimentanalysis/templates/results.html" />
+        <option value="$PROJECT_DIR$/sentimentanalysis/templates/search.html" />
       </list>
     </option>
   </component>
@@ -845,22 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="35" column="60" lean-forward="false" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="89" column="35" lean-forward="false" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sentimentanalysis/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -871,27 +855,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="35" column="60" lean-forward="false" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sentimentanalysis/static/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="810" column="19" lean-forward="false" selection-start-line="810" selection-start-column="19" selection-end-line="810" selection-end-column="19" />
+        <state relative-caret-position="340">
+          <caret line="843" column="1" lean-forward="false" selection-start-line="843" selection-start-column="1" selection-end-line="843" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sentimentanalysis/templates/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="57" lean-forward="true" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
+        <state relative-caret-position="250">
+          <caret line="99" column="16" lean-forward="false" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
           <folding>
-            <element signature="e#710#736#0#HTML" expanded="true" />
-            <element signature="e#993#1111#0#HTML" expanded="true" />
-            <element signature="e#1382#1443#0#HTML" expanded="true" />
-            <element signature="e#1459#1529#0#HTML" expanded="true" />
-            <element signature="e#1660#1681#0#HTML" expanded="true" />
-            <element signature="e#1766#1806#0#HTML" expanded="true" />
-            <element signature="e#1953#1974#0#HTML" expanded="true" />
-            <element signature="e#2025#2065#0#HTML" expanded="true" />
+            <element signature="e#1001#1027#0#HTML" expanded="true" />
+            <element signature="e#1283#1401#0#HTML" expanded="true" />
+            <element signature="e#1672#1733#0#HTML" expanded="true" />
+            <element signature="e#1749#1819#0#HTML" expanded="true" />
+            <element signature="e#1950#1971#0#HTML" expanded="true" />
+            <element signature="e#2056#2096#0#HTML" expanded="true" />
+            <element signature="e#2243#2264#0#HTML" expanded="true" />
+            <element signature="e#2315#2355#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

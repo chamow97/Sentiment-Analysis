@@ -4,11 +4,28 @@
     active
 {% endblock %}
 {% block content %}
+<div class="preload">
+<img src="{% static 'assets/loading1.gif' %}">
+</div>
+
+<div class="content">
+Please be patient while your content loads.
+</div>
+<script>
+$(function() {
+    $(".preload").fadeOut(2000, function() {
+        $(".content").fadeIn(1000);
+    });
+});​
+
+</script>
     <div>
-        <img id="fullScreen" src="{% static 'assets/loading1.gif' %}">
         <div class="col col-xs-3 col-sm-3 col-md-2 col-lg-2">
             </div>
         <h5 class="searchResults">Search results for {{ searchTerm }} :</h5>
+        <script>
+            var searchFor = "{{ searchTerm }}";
+        </script>
         <br><br>
         <center>
             <a href="../search" class="btn btn-primary">Search Again</a>
@@ -34,7 +51,6 @@
         <br><br>
         <br><br>
         <br>
-
         <div style="background-color: #FFF;margin-left: 250px; width: 560px; height: 450px; border-radius: 8px; margin-top: 400px;" class="chart-container">
             <div id="india-map" class="imageWrapper">
             </div>
@@ -68,20 +84,19 @@
                 var negativeTweetContent = document.getElementById("negativeTweetContents");
                 var maps = [];
                 jQuery.ajaxSetup({async:false});
-                {#$.ajax({#}
-                {#     url: 'http://192.168.1.100:5000/retrieve',#}
-                {#     type: 'POST',#}
-                {#     contentType: "application/json",#}
-                {#     dataType: "json",#}
-                {#     data: JSON.stringify({"key": "cambridge"}),#}
-                {#     success: function (data) {#}
-                {#        $("#fullScreen").hide();#}
-                {#         maps = data;#}
-                {#         console.log(maps);#}
-                {#         generateAll();#}
-                {#     }#}
-                {# });#}
-                maps = {"contents": {"total_sentiment": {"neg": 291, "neu": 508, "pos": 182}, "timeline": {"neg": {"2018-03-31 04:00:00": 99, "2018-03-31 03:00:00": 94, "2018-03-31 02:00:00": 98}, "neu": {"2018-03-31 04:00:00": 137, "2018-03-31 03:00:00": 221, "2018-03-31 02:00:00": 150}, "pos": {"2018-03-31 04:00:00": 48, "2018-03-31 03:00:00": 72, "2018-03-31 02:00:00": 62}}, "gender_details": {"M": {"neg": 201, "neu": 338, "pos": 139}, "F": {"neg": 90, "neu": 170, "pos": 43}}, "noun_based_importance": {}, "important_tweets": {"neg": [{"original_text": "Alleging 'Very Serious' Violations, Groups File Complaint Against John Bolton Super PAC Over Ties to Cambridge Analytica || via; Commondreams https://t.co/MPNcumQcN4", "text": "Alleging 'Very Serious' Violations, Groups File Complaint Against John Bolton Super PAC Over Ties to Cambridge Analytica || via; Commondreams "}, {"original_text": "We lost the data wars even before #CambridgeAnalytica : I write in @washingtonpost - the quarrel between BJP &amp; Congress is just noise. We are complicit in the invasion of our Privacy. Culturally we are exhibitionists; Professionally digital salespersons https://t.co/lIa8DrVTeZ", "text": "We lost the data wars even before #CambridgeAnalytica : I write in @washingtonpost - the quarrel between BJP &amp; Congress is just noise. We are complicit in the invasion of our Privacy. Culturally we are exhibitionists; Professionally digital salespersons "}, {"original_text": "As journalists we have lived with three hegemonies: the Tyranny of the State ( when governments controlled Media); the Tyranny of the Market ( supplicant to ad revenue) &amp; now the third- the Tyranny of the Algorithm! I write in @washingtonpost on data wars https://t.co/lIa8DrVTeZ", "text": "As journalists we have lived with three hegemonies: the Tyranny of the State ( when governments controlled Media); the Tyranny of the Market ( supplicant to ad revenue) &amp; now the third- the Tyranny of the Algorithm! I write in @washingtonpost on data wars "}, {"original_text": "Prof Stephen Hawking Cambridge funeral to take place https://t.co/FmrSbCbJ5R", "text": "Prof Stephen Hawking Cambridge funeral to take place "}, {"original_text": "@realDonaldTrump \\u2018Cambridge Analytica and Online Manipulation\\u2019\\n\\n\\u2018It's not just about data protection; it's about strategies designed to induce addictive behavior, and thus to manipulate\\u2019  \\n\\nhttps://t.co/yWfTloW0Ot", "text": "@realDonaldTrump Analytica and Online Manipulation not just about data protection; it's about strategies designed to induce addictive behavior, and thus to manipulate "}], "neu": [{"original_text": "The question remains whether the kind of targeting allegedly done by Cambridge Analytica on behalf of Donald Trump\\u2019s campaign can actually influence people\\u2019s behavior. https://t.co/qbxAC1dt3L", "text": "The question remains whether the kind of targeting allegedly done by Cambridge Analytica on behalf of Donald Trump campaign can actually influence people behavior. "}, {"original_text": "Cambridge Analytica's Fossil Fuel Connections - Several key directors at CA/SCL Group have direct connections to the fossil fuel industry, records show, by @NafeezAhmed https://t.co/mYreBElgA6", "text": "Cambridge Analytica's Fossil Fuel Connections - Several key directors at CA/SCL Group have direct connections to the fossil fuel industry, records show, by @NafeezAhmed "}, {"original_text": "Thousands of people are expected to arrive in #Cambridge for the #funeral of British #physicist #StephenHawking.\\n\\nhttps://t.co/nah6aHilbv", "text": "Thousands of people are expected to arrive in #Cambridge for the #funeral of British #physicist #StephenHawking. "}, {"original_text": "Here's how Cambridge Analytica sold itself to clients AFTER the election. See the document for yourself. https://t.co/EWHkYcpApv", "text": "Here's how Cambridge Analytica sold itself to clients AFTER the election. See the document for yourself. "}, {"original_text": "De acuerdo con el Comit\\xe9 Ejecutivo Nacional del @PRI_Nacional, ellos jam\\xe1s han celebrado contratos con Cambridge Analytica. https://t.co/1Wuu9jHOrK", "text": "According to the National Executive Committee of @PRI_Nacional, they have never entered into contracts with Cambridge Analytica."}], "pos": [{"original_text": "@AynRandPaulRyan @SaysHummingbird @mystcole @lena_eisen @TXWomenRising @TXElects @1Jedi_Rey @CaptainsLog2O18 @captDameron2018 @TopRopeTravis @TwoBroadsTalk @DeepInTheHills @joncoopertweets @jomareewade @DMansini @ekcj1234 @ifindkarma @eorlins @HeatherWhaley @tarastrong @Alyssa_Milano @TheLoveBel0w @B52Malmet The Cambridge Analytica revelations really drive home the need for the FCC to demand that outside political money groups disclose the *names of their major donors* funding their ads. That goes for Facebook ads - and Amy Klobuchar has a great bill that does just that. \\n\\n3/", "text": "@AynRandPaulRyan @SaysHummingbird @mystcole @lena_eisen @TXWomenRising @TXElects @1Jedi_Rey @CaptainsLog2O18 @captDameron2018 @TopRopeTravis @TwoBroadsTalk @DeepInTheHills @joncoopertweets @jomareewade @DMansini @ekcj1234 @ifindkarma @eorlins @HeatherWhaley @tarastrong @Alyssa_Milano @TheLoveBel0w @B52Malmet The Cambridge Analytica revelations really drive home the need for the FCC to demand that outside political money groups disclose the *names of their major donors* funding their ads. That goes for Facebook ads - and Amy Klobuchar has a great bill that does just that. 3/"}, {"original_text": "Thousands expected at Professor #StephenHawking's funeral at Great St. Mary's Church in Cambridge https://t.co/svpwS2YJaS https://t.co/g8T4PdMdAG", "text": "Thousands expected at Professor #StephenHawking's funeral at Great St. Mary's Church in Cambridge "}, {"original_text": "Friends, family and colleagues of Stephen Hawking will gather to pay their respects at a private funeral in Cambridge, where he spent most of his extraordinary life https://t.co/AVATJNfeiu https://t.co/Eg7oR1oDvo", "text": "Friends, family and colleagues of Stephen Hawking will gather to pay their respects at a private funeral in Cambridge, where he spent most of his extraordinary life "}, {"original_text": "@realDonaldTrump \\u2018Wiley reveals work the Trump data firm did for a Russian oil company with ties to Kremlin intelligence, was \\u201cconcerning\\u201d and that they could be aware of a \\u201cmassive data set being harvested on Americans\\u201d\\n(Video) https://t.co/0ko74Aj0Ju", "text": "@realDonaldTrump reveals work the Trump data firm did for a Russian oil company with ties to Kremlin intelligence, was and that they could be aware of a data set being harvested on Americans "}, {"original_text": "When users click OK to Manorama Online and Mathrubhumi News app, do they realize what they are giving up? https://t.co/PfeoQxhpvN Is Effective Measure another Cambridge Analytica? @Swamy39  @mohandastg", "text": "When users click OK to Manorama Online and Mathrubhumi News app, do they realize what they are giving up? Is Effective Measure another Cambridge Analytica? @Swamy39 @mohandastg"}]}, "geographic_sentiments": {"Pondicherry": {"neg": 0, "neu": 0, "pos": 0}, "Haryana": {"neg": 9, "neu": 17, "pos": 6}, "Punjab": {"neg": 1, "neu": 2, "pos": 1}, "Goa": {"neg": 0, "neu": 1, "pos": 1}, "Chhattisgarh": {"neg": 0, "neu": 0, "pos": 0}, "Kerala": {"neg": 3, "neu": 5, "pos": 1}, "Daman and Diu": {"neg": 0, "neu": 0, "pos": 0}, "Andaman and Nicobar": {"neg": 0, "neu": 0, "pos": 0}, "Bihar": {"neg": 0, "neu": 2, "pos": 2}, "Tamil Nadu": {"neg": 5, "neu": 13, "pos": 1}, "Jammu and Kashmir": {"neg": 0, "neu": 0, "pos": 0}, "Madhya Pradesh": {"neg": 0, "neu": 2, "pos": 0}, "Jharkhand": {"neg": 1, "neu": 0, "pos": 0}, "Meghalaya": {"neg": 0, "neu": 0, "pos": 0}, "Delhi": {"neg": 3, "neu": 4, "pos": 0}, "Orissa": {"neg": 0, "neu": 0, "pos": 0}, "Assam": {"neg": 0, "neu": 1, "pos": 0}, "Dadra and Nagar Haveli": {"neg": 0, "neu": 0, "pos": 0}, "Lakshadweep": {"neg": 0, "neu": 1, "pos": 0}, "West Bengal": {"neg": 0, "neu": 3, "pos": 0}, "Rajasthan": {"neg": 3, "neu": 5, "pos": 5}, "Uttar Pradesh": {"neg": 11, "neu": 40, "pos": 3}, "Manipur": {"neg": 0, "neu": 0, "pos": 0}, "Uttarakhand": {"neg": 0, "neu": 0, "pos": 0}, "Andhra Pradesh": {"neg": 84, "neu": 124, "pos": 51}, "Himachal Pradesh": {"neg": 0, "neu": 0, "pos": 0}, "Others": {"neg": 152, "neu": 259, "pos": 89}, "Nagaland": {"neg": 0, "neu": 0, "pos": 0}, "Gujarat": {"neg": 0, "neu": 1, "pos": 3}, "Arunachal Pradesh": {"neg": 0, "neu": 1, "pos": 0}, "Maharashtra": {"neg": 13, "neu": 21, "pos": 11}, "Tripura": {"neg": 0, "neu": 0, "pos": 0}, "Telangana": {"neg": 2, "neu": 1, "pos": 0}, "Karnataka": {"neg": 4, "neu": 5, "pos": 8}, "Mizoram": {"neg": 0, "neu": 0, "pos": 0}, "Sikkim": {"neg": 0, "neu": 0, "pos": 0}}, "ethnicity": {"Hindu": {"neg": 59, "neu": 71, "pos": 29}, "Muslim": {"neg": 11, "neu": 20, "pos": 5}, "Christian": {"neg": 221, "neu": 417, "pos": 148}}}};
+                $.ajax({
+                     url: 'http://192.168.1.100:5000/retrieve',
+                     type: 'POST',
+                     contentType: "application/json",
+                     dataType: "json",
+                     data: JSON.stringify({"key": searchFor}),
+                     success: function (data) {
+                        $("#fullScreen").hide();
+                         maps = data;
+                         console.log(maps);
+                         generateAll();
+                     }
+                 });
                 generateAll();
                 function generateAll(){
                 {% static "" as baseUrl %}
@@ -220,7 +235,7 @@
                         },
                         title: {
                             display: true,
-                            text: 'Sentiment Analysis'
+                            text: 'Overall Sentiment Analysis'
                         },
                         tooltips: {
                            callbacks: {
@@ -283,7 +298,7 @@
                             },
                             title: {
                                 display: true,
-                                text: 'Sentiment Analysis'
+                                text: 'Gender Distribution'
                             },
                             animation: {
                                 duration: 4000,
@@ -308,11 +323,20 @@
                             },
                             scales: {
                                 yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Positive'
+                                      },
+
                                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                                     display: true,
                                     position: 'left',
                                     id: 'y-axis-1',
                                 }, {
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Negative'
+                                      },
                                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                                     display: true,
                                     position: 'right',
@@ -323,6 +347,10 @@
                                         drawOnChartArea: false, // only want the grid lines for one axis to show up
                                     }
                                 },{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Neutral'
+                                      },
                                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                                     display: true,
                                     position: 'right',
